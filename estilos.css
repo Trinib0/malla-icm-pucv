@@ -1,6 +1,6 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
+  background-color: #f4f4f4;
   color: #333;
   padding: 20px;
 }
@@ -39,11 +39,12 @@ h1, h2, h3 {
   border: 2px solid #00b4d8;
   border-radius: 8px;
   padding: 10px;
-  width: 160px;
+  width: 150px;
   min-height: 70px;
   text-align: center;
   font-weight: bold;
-  box-shadow: 1px 1px 4px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
 
 .course span {
@@ -54,8 +55,19 @@ h1, h2, h3 {
   margin-top: 5px;
 }
 
-@media (max-width: 768px) {
-  .course {
-    width: 100%;
-  }
+.course:hover {
+  background-color: #e0f7ff;
+}
+
+/* Estado aprobado */
+.course.aprobado {
+  background-color: #caffbf;
+  border-color: #2a9d8f;
+  color: #064e3b;
+}
+
+/* Cursos ocultos (no habilitados por prerrequisitos) */
+.course[style*="display: none"] {
+  opacity: 0.4;
+  pointer-events: none;
 }
