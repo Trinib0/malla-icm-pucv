@@ -1,36 +1,40 @@
-function cumplePrerrequisitos(prerreqs) {
-  return prerreqs.every(id => {
-    const ramo = document.getElementById(id);
-    return ramo && ramo.classList.contains("aprobado");
+document.addEventListener("DOMContentLoaded", function () {
+  const ramos = document.querySelectorAll(".ramo");
+
+  // Mapa con prerequisitos por ramo
+  const mapa = {};
+  ramos.forEach(ramo => {
+    const id = ramo.id;
+    const prerreq = ramo.dataset.prerreq ? JSON.parse(ramo.dataset.prerreq) : [];
+    mapa[id] = { el: ramo, prerreq };
   });
-}
 
-function actualizarBloqueos() {
-  document.querySelectorAll(".ramo").forEach(ramo => {
-    const prerreqs = ramo.dataset.prerreq ? JSON.parse(ramo.dataset.prerreq) : [];
+  // Verifica si un ramo puede activarse según sus prerrequisitos
+  function puedeActivarse(id) {
+    return mapa[id].prerreq.every(pr => mapa[pr].el.classList.contains("aprobado"));
+  }
 
-    if (prerreqs.length > 0) {
-      if (cumplePrerrequisitos(prerreqs)) {
-        ramo.classList.remove("bloqueado");
-        ramo.style.opacity = 1;
-        ramo.style.pointerEvents = "auto";
-      } else {
-        ramo.classList.remove("aprobado"); // si pierde el requisito, se desmarca
+  // Actualiza estado de todos los ramos
+  function actualizarEstado() {
+    Object.keys(mapa).forEach(id => {
+      const ramo = mapa[id].el;
+      if (!ramo.classList.contains("aprobado") && !puedeActivarse(id)) {
         ramo.classList.add("bloqueado");
-        ramo.style.opacity = 0.5;
-        ramo.style.pointerEvents = "none";
+      } else {
+        ramo.classList.remove("bloqueado");
       }
-    }
-  });
-}
+    });
+  }
 
-document.querySelectorAll(".ramo").forEach(ramo => {
-  ramo.addEventListener("click", () => {
-    if (ramo.classList.contains("bloqueado")) return;
-
-    ramo.classList.toggle("aprobado");
-    actualizarBloqueos();
+  // Evento click: aprobar/desaprobar ramos
+  ramos.forEach(ramo => {
+    ramo.addEventListener("click", function () {
+      if (ramo.classList.contains("bloqueado")) return;
+      ramo.classList.toggle("aprobado");
+      actualizarEstado();
+    });
   });
+
+  // Estado inicial
+  actualizarEstado();
 });
-
-window.onload = actualizarBloqueos;
