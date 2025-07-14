@@ -1,73 +1,36 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  color: #333;
-  padding: 20px;
+function cumplePrerrequisitos(prerreqs) {
+  return prerreqs.every(id => {
+    const ramo = document.getElementById(id);
+    return ramo && ramo.classList.contains("aprobado");
+  });
 }
 
-h1, h2, h3 {
-  text-align: center;
-  color: #003366;
+function actualizarBloqueos() {
+  document.querySelectorAll(".ramo").forEach(ramo => {
+    const prerreqs = ramo.dataset.prerreq ? JSON.parse(ramo.dataset.prerreq) : [];
+
+    if (prerreqs.length > 0) {
+      if (cumplePrerrequisitos(prerreqs)) {
+        ramo.classList.remove("bloqueado");
+        ramo.style.opacity = 1;
+        ramo.style.pointerEvents = "auto";
+      } else {
+        ramo.classList.remove("aprobado"); // si pierde el requisito, se desmarca
+        ramo.classList.add("bloqueado");
+        ramo.style.opacity = 0.5;
+        ramo.style.pointerEvents = "none";
+      }
+    }
+  });
 }
 
-.year {
-  background-color: #e3eef9;
-  border-radius: 10px;
-  padding: 20px;
-  margin: 30px 0;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-}
+document.querySelectorAll(".ramo").forEach(ramo => {
+  ramo.addEventListener("click", () => {
+    if (ramo.classList.contains("bloqueado")) return;
 
-.semester {
-  background-color: #ffffff;
-  border-left: 5px solid #0077b6;
-  margin: 20px 0;
-  padding: 15px;
-  border-radius: 5px;
-}
+    ramo.classList.toggle("aprobado");
+    actualizarBloqueos();
+  });
+});
 
-.courses-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-  margin-top: 10px;
-}
-
-.course {
-  background-color: #f1f9ff;
-  border: 2px solid #00b4d8;
-  border-radius: 8px;
-  padding: 10px;
-  width: 150px;
-  min-height: 70px;
-  text-align: center;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-}
-
-.course span {
-  display: block;
-  font-weight: normal;
-  font-size: 13px;
-  color: #555;
-  margin-top: 5px;
-}
-
-.course:hover {
-  background-color: #e0f7ff;
-}
-
-/* Estado aprobado */
-.course.aprobado {
-  background-color: #caffbf;
-  border-color: #2a9d8f;
-  color: #064e3b;
-}
-
-/* Cursos ocultos (no habilitados por prerrequisitos) */
-.course[style*="display: none"] {
-  opacity: 0.4;
-  pointer-events: none;
-}
+window.onload = actualizarBloqueos;
