@@ -4,59 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Malla Ingeniería Civil Mecánica</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
-      color: #333;
-      padding: 20px;
-    }
-
-    h1, h2, h3 {
-      text-align: center;
-      color: #003366;
-    }
-
-    .year {
-      background-color: #e3eef9;
-      border-radius: 10px;
-      padding: 20px;
-      margin: 30px 0;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    }
-
-    .semester {
-      background-color: #ffffff;
-      border-left: 5px solid #0077b6;
-      margin: 20px 0;
-      padding: 15px;
-      border-radius: 5px;
-    }
-
-    .course {
-      background-color: #f1f9ff;
-      padding: 10px;
-      margin: 8px 0;
-      border-left: 3px solid #00b4d8;
-      border-radius: 4px;
-    }
-
-    .prereq {
-      font-style: italic;
-      color: #555;
-      margin-top: 4px;
-    }
-
-    @media (max-width: 600px) {
-      body {
-        padding: 10px;
-      }
-
-      .semester {
-        font-size: 14px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -68,19 +16,23 @@
 
   <div class="semester">
     <h3>Semestre 1</h3>
-    <div class="course">ICM1010 – Introducción a la ingeniería mecánica<div class="prereq">Sin prerrequisitos</div></div>
-    <div class="course">MAT1001 – Fundamentos de matemáticas para ingeniería<div class="prereq">Sin prerrequisitos</div></div>
-    <div class="course">FIS1010 – Fundamentos de física<div class="prereq">Sin prerrequisitos</div></div>
-    <div class="course">QUI127 – Fundamentos de química<div class="prereq">Sin prerrequisitos</div></div>
-    <div class="course">FIN100-73 – Comunicación efectiva y desarrollo profesional e integral<div class="prereq">Sin prerrequisitos</div></div>
+    <div class="courses-row">
+      <div class="course" data-codigo="ICM1010">ICM1010<br><span>Sin prerrequisitos</span></div>
+      <div class="course" data-codigo="MAT1001">MAT1001<br><span>Sin prerrequisitos</span></div>
+      <div class="course" data-codigo="FIS1010">FIS1010<br><span>Sin prerrequisitos</span></div>
+      <div class="course" data-codigo="QUI127">QUI127<br><span>Sin prerrequisitos</span></div>
+      <div class="course" data-codigo="FIN100-73">FIN100-73<br><span>Sin prerrequisitos</span></div>
+    </div>
   </div>
 
   <div class="semester">
     <h3>Semestre 2</h3>
-    <div class="course">MAT1002 – Cálculo diferencial e integral<div class="prereq">MAT1001</div></div>
-    <div class="course">FIS1001 – Física mecánica<div class="prereq">MAT1001</div></div>
-    <div class="course">FIS1012 – Laboratorio de física mecánica<div class="prereq">MAT1001</div></div>
-    <div class="course">ICM1012 – Dibujo para mecánica<div class="prereq">Sin prerrequisitos</div></div>
+    <div class="courses-row">
+      <div class="course" data-codigo="MAT1002">MAT1002<br><span>MAT1001</span></div>
+      <div class="course" data-codigo="FIS1001">FIS1001<br><span>MAT1001</span></div>
+      <div class="course" data-codigo="FIS1012">FIS1012<br><span>MAT1001</span></div>
+      <div class="course" data-codigo="ICM1012">ICM1012<br><span>Sin prerrequisitos</span></div>
+    </div>
   </div>
 </div>
 
@@ -90,18 +42,22 @@
 
   <div class="semester">
     <h3>Semestre 3</h3>
-    <div class="course">MAT1003 – Cálculo en varias variables<div class="prereq">MAT1002</div></div>
-    <div class="course">MAT1004 – Álgebra lineal<div class="prereq">MAT1002</div></div>
-    <div class="course">ICM2010 – Estadística aplicada<div class="prereq">MAT1001</div></div>
-    <div class="course">ICM2011 – Ciencias de los materiales<div class="prereq">QUI127</div></div>
+    <div class="courses-row">
+      <div class="course" data-codigo="MAT1003">MAT1003<br><span>MAT1002</span></div>
+      <div class="course" data-codigo="MAT1004">MAT1004<br><span>MAT1002</span></div>
+      <div class="course" data-codigo="ICM2010">ICM2010<br><span>MAT1001</span></div>
+      <div class="course" data-codigo="ICM2011">ICM2011<br><span>QUI127</span></div>
+    </div>
   </div>
 
   <div class="semester">
     <h3>Semestre 4</h3>
-    <div class="course">MAT1005 – Ecuaciones diferenciales<div class="prereq">MAT1003</div></div>
-    <div class="course">ICM2013 – Estática<div class="prereq">MAT1003, FIS1001</div></div>
-    <div class="course">ICM2012 – Mediciones y metrología<div class="prereq">ICM2010</div></div>
-    <div class="course">ICM2014 – Materiales para ingeniería<div class="prereq">ICM2011</div></div>
+    <div class="courses-row">
+      <div class="course" data-codigo="MAT1005">MAT1005<br><span>MAT1003</span></div>
+      <div class="course" data-codigo="ICM2013">ICM2013<br><span>MAT1003, FIS1001</span></div>
+      <div class="course" data-codigo="ICM2012">ICM2012<br><span>ICM2010</span></div>
+      <div class="course" data-codigo="ICM2014">ICM2014<br><span>ICM2011</span></div>
+    </div>
   </div>
 </div>
 
@@ -111,18 +67,22 @@
 
   <div class="semester">
     <h3>Semestre 5</h3>
-    <div class="course">MAT1007 – Ecuaciones diferenciales parciales<div class="prereq">MAT1005</div></div>
-    <div class="course">ICM3010 – Dinámica<div class="prereq">ICM2013</div></div>
-    <div class="course">ICM3011 – Termodinámica 1<div class="prereq">MAT1003, QUI127</div></div>
-    <div class="course">ING9001 – Inglés 1<div class="prereq">Sin prerrequisitos</div></div>
+    <div class="courses-row">
+      <div class="course" data-codigo="MAT1007">MAT1007<br><span>MAT1005</span></div>
+      <div class="course" data-codigo="ICM3010">ICM3010<br><span>ICM2013</span></div>
+      <div class="course" data-codigo="ICM3011">ICM3011<br><span>MAT1003, QUI127</span></div>
+      <div class="course" data-codigo="ING9001">ING9001<br><span>Sin prerrequisitos</span></div>
+    </div>
   </div>
 
   <div class="semester">
     <h3>Semestre 6</h3>
-    <div class="course">ICM3012 – Procesos de fabricación 1<div class="prereq">ICM2011</div></div>
-    <div class="course">ICM3013 – Lenguaje de programación y métodos numéricos<div class="prereq">MAT1005</div></div>
-    <div class="course">ICM3014 – Mecánica de fluidos<div class="prereq">ICM3011, MAT1007</div></div>
-    <div class="course">ING9002 – Inglés 2<div class="prereq">ING9001</div></div>
+    <div class="courses-row">
+      <div class="course" data-codigo="ICM3012">ICM3012<br><span>ICM2011</span></div>
+      <div class="course" data-codigo="ICM3013">ICM3013<br><span>MAT1005</span></div>
+      <div class="course" data-codigo="ICM3014">ICM3014<br><span>ICM3011, MAT1007</span></div>
+      <div class="course" data-codigo="ING9002">ING9002<br><span>ING9001</span></div>
+    </div>
   </div>
 </div>
 
@@ -132,19 +92,23 @@
 
   <div class="semester">
     <h3>Semestre 7</h3>
-    <div class="course">ICM4012 – Termodinámica 2<div class="prereq">ICM3011, ICM3014</div></div>
-    <div class="course">ICM4011 – Mecánica de materiales<div class="prereq">ICM2011</div></div>
-    <div class="course">ICM4010 – Procesos de fabricación 2<div class="prereq">ICM3012</div></div>
-    <div class="course">ING9003 – Inglés 3<div class="prereq">ING9002</div></div>
+    <div class="courses-row">
+      <div class="course" data-codigo="ICM4012">ICM4012<br><span>ICM3011, ICM3014</span></div>
+      <div class="course" data-codigo="ICM4011">ICM4011<br><span>ICM2011</span></div>
+      <div class="course" data-codigo="ICM4010">ICM4010<br><span>ICM3012</span></div>
+      <div class="course" data-codigo="ING9003">ING9003<br><span>ING9002</span></div>
+    </div>
   </div>
 
   <div class="semester">
     <h3>Semestre 8</h3>
-    <div class="course">ICM4014 – Electrotecnia<div class="prereq">Sin prerrequisitos</div></div>
-    <div class="course">ICM4015 – Elementos de máquinas<div class="prereq">ICM4011, ICM3010</div></div>
-    <div class="course">ICM4013 – Vibraciones mecánicas<div class="prereq">ICM3010, MAT1007</div></div>
-    <div class="course">ICM4016 – Transferencia de calor<div class="prereq">ICM3014, ICM4012</div></div>
-    <div class="course">ING9004 – Inglés 4<div class="prereq">ING9003</div></div>
+    <div class="courses-row">
+      <div class="course" data-codigo="ICM4014">ICM4014<br><span>Sin prerrequisitos</span></div>
+      <div class="course" data-codigo="ICM4015">ICM4015<br><span>ICM4011, ICM3010</span></div>
+      <div class="course" data-codigo="ICM4013">ICM4013<br><span>ICM3010, MAT1007</span></div>
+      <div class="course" data-codigo="ICM4016">ICM4016<br><span>ICM3014, ICM4012</span></div>
+      <div class="course" data-codigo="ING9004">ING9004<br><span>ING9003</span></div>
+    </div>
   </div>
 </div>
 
@@ -154,19 +118,23 @@
 
   <div class="semester">
     <h3>Semestre 9</h3>
-    <div class="course">ICM5013 – Turbomáquinas<div class="prereq">ICM4016</div></div>
-    <div class="course">ICM5012 – Modelación mecánica<div class="prereq">ICM4011, ICM4016</div></div>
-    <div class="course">ICM5010 – Análisis de falla y monitoreo de condiciones<div class="prereq">ICM2014</div></div>
-    <div class="course">ICM5011 – Automatización y control<div class="prereq">ICM4014</div></div>
-    <div class="course">ICM550 – Evaluación de proyectos<div class="prereq">Sin prerrequisitos</div></div>
+    <div class="courses-row">
+      <div class="course" data-codigo="ICM5013">ICM5013<br><span>ICM4016</span></div>
+      <div class="course" data-codigo="ICM5012">ICM5012<br><span>ICM4011, ICM4016</span></div>
+      <div class="course" data-codigo="ICM5010">ICM5010<br><span>ICM2014</span></div>
+      <div class="course" data-codigo="ICM5011">ICM5011<br><span>ICM4014</span></div>
+      <div class="course" data-codigo="ICM550">ICM550<br><span>Sin prerrequisitos</span></div>
+    </div>
   </div>
 
   <div class="semester">
     <h3>Semestre 10</h3>
-    <div class="course">ICM5014 – Herramientas de gestión de la producción<div class="prereq">Sin prerrequisitos</div></div>
-    <div class="course">ICM5016 – Diseño mecánico<div class="prereq">ICM5012</div></div>
-    <div class="course">ICM5017 – Proyecto de titulación 1<div class="prereq">Sin prerrequisitos</div></div>
-    <div class="course">ICM5015 – Optimización e ingeniería de plantas<div class="prereq">Sin prerrequisitos</div></div>
+    <div class="courses-row">
+      <div class="course" data-codigo="ICM5014">ICM5014<br><span>Sin prerrequisitos</span></div>
+      <div class="course" data-codigo="ICM5016">ICM5016<br><span>ICM5012</span></div>
+      <div class="course" data-codigo="ICM5017">ICM5017<br><span>Sin prerrequisitos</span></div>
+      <div class="course" data-codigo="ICM5015">ICM5015<br><span>Sin prerrequisitos</span></div>
+    </div>
   </div>
 </div>
 
@@ -176,12 +144,15 @@
 
   <div class="semester">
     <h3>Semestre 11</h3>
-    <div class="course">ICM6010 – Administración de RR.HH.<div class="prereq">Sin prerrequisitos</div></div>
-    <div class="course">ICM6011 – Gestión de activos y confiabilidad<div class="prereq">ICM5010</div></div>
-    <div class="course">ICM6012 – Proyecto de ingeniería<div class="prereq">ICM5015, ICM550</div></div>
-    <div class="course">ICM6013 – Proyecto de titulación 2<div class="prereq">ICM5017</div></div>
+    <div class="courses-row">
+      <div class="course" data-codigo="ICM6010">ICM6010<br><span>Sin prerrequisitos</span></div>
+      <div class="course" data-codigo="ICM6011">ICM6011<br><span>ICM5010</span></div>
+      <div class="course" data-codigo="ICM6012">ICM6012<br><span>ICM5015, ICM550</span></div>
+      <div class="course" data-codigo="ICM6013">ICM6013<br><span>ICM5017</span></div>
+    </div>
   </div>
 </div>
 
+<script src="script.js"></script>
 </body>
 </html>
