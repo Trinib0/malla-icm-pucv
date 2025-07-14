@@ -2,115 +2,91 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Malla Ingeniería Civil Mecánica - PUCV</title>
+  <title>Malla Interactiva ICM</title>
   <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
-  <h1>Malla Ingeniería Civil Mecánica - PUCV</h1>
+  <h1>Malla Interactiva - Ingeniería Civil Mecánica</h1>
 
-  <!-- AÑO 1 -->
-  <div class="semestre">
-    <h2>Semestre 1</h2>
-    <div class="ramo" id="ICM1010">ICM1010 - Introducción a la Ingeniería Mecánica</div>
-    <div class="ramo" id="MAT1001">MAT1001 - Fundamentos de Matemáticas para Ingeniería</div>
-    <div class="ramo" id="FIS1010">FIS1010 - Fundamentos de Física</div>
-    <div class="ramo" id="QUI1127">QUI1127 - Fundamentos de Química</div>
-    <div class="ramo" id="COM100-73">COM100-73 - Comunicación y Expresión</div>
+  <div id="contenedor-semestres">
+
+    <!-- SEMESTRE 1 -->
+    <div class="semestre">
+      <h2>Semestre 1</h2>
+      <div class="ramo" id="MAT1001">Cálculo I</div>
+      <div class="ramo" id="FIS1010">Intro a la Física</div>
+      <div class="ramo" id="QUI1001">Química</div>
+      <div class="ramo" id="ICM1001">Intro Ing. Mecánica</div>
+      <div class="ramo" id="ING9001">Inglés I</div>
+    </div>
+
+    <!-- SEMESTRE 2 -->
+    <div class="semestre">
+      <h2>Semestre 2</h2>
+      <div class="ramo" id="MAT1002" data-prerreq='["MAT1001"]'>Cálculo II</div>
+      <div class="ramo" id="FIS1001" data-prerreq='["MAT1001", "FIS1010"]'>Física Mecánica</div>
+      <div class="ramo" id="FIS1002" data-prerreq='["MAT1001", "FIS1010"]'>Física Ondas</div>
+      <div class="ramo" id="ICM2010" data-prerreq='["MAT1001"]'>Rep. Gráfica</div>
+      <div class="ramo" id="ING9002" data-prerreq='["ING9001"]'>Inglés II</div>
+    </div>
+
+    <!-- SEMESTRE 3 -->
+    <div class="semestre">
+      <h2>Semestre 3</h2>
+      <div class="ramo" id="MAT2001" data-prerreq='["MAT1002"]'>Cálculo III</div>
+      <div class="ramo" id="FIS2001" data-prerreq='["FIS1001"]'>Física Electromagnetismo</div>
+      <div class="ramo" id="ICM2001" data-prerreq='["ICM2010"]'>Materiales</div>
+      <div class="ramo" id="ING9003" data-prerreq='["ING9002"]'>Inglés III</div>
+    </div>
+
+    <!-- SEMESTRE 4 -->
+    <div class="semestre">
+      <h2>Semestre 4</h2>
+      <div class="ramo" id="MAT2002" data-prerreq='["MAT2001"]'>Ecuaciones Diferenciales</div>
+      <div class="ramo" id="ICM2002" data-prerreq='["ICM2001"]'>Mecánica de Sólidos</div>
+      <div class="ramo" id="ICM2003" data-prerreq='["ICM2010"]'>Dibujo Técnico</div>
+      <div class="ramo" id="ING9004" data-prerreq='["ING9003"]'>Inglés IV</div>
+    </div>
+
+    <!-- SEMESTRE 5 al 11 (simplificados por ahora) -->
+    <div class="semestre">
+      <h2>Semestre 5</h2>
+      <div class="ramo" id="ICM3001">Mecánica de Fluidos</div>
+      <div class="ramo" id="ICM3002">Termodinámica</div>
+    </div>
+
+    <div class="semestre">
+      <h2>Semestre 6</h2>
+      <div class="ramo" id="ICM3003">Procesos de Manufactura</div>
+    </div>
+
+    <div class="semestre">
+      <h2>Semestre 7</h2>
+      <div class="ramo" id="ICM4001">Diseño Mecánico</div>
+    </div>
+
+    <div class="semestre">
+      <h2>Semestre 8</h2>
+      <div class="ramo" id="ICM4002">Control Automático</div>
+    </div>
+
+    <div class="semestre">
+      <h2>Semestre 9</h2>
+      <div class="ramo" id="ICM5001">Electrónica</div>
+    </div>
+
+    <div class="semestre">
+      <h2>Semestre 10</h2>
+      <div class="ramo" id="ICM5002">Proyecto de Título I</div>
+    </div>
+
+    <div class="semestre">
+      <h2>Semestre 11</h2>
+      <div class="ramo" id="ICM5003">Proyecto de Título II</div>
+    </div>
+
   </div>
 
-  <div class="semestre">
-    <h2>Semestre 2</h2>
-    <div class="ramo" id="MAT1002" data-prerreq='["MAT1001"]'>MAT1002 - Cálculo Diferencial e Integral</div>
-    <div class="ramo" id="FIS1001" data-prerreq='["FIS1010", "MAT1001"]'>FIS1001 - Física Mecánica</div>
-    <div class="ramo" id="FIS1012" data-prerreq='["FIS1010"]'>FIS1012 - Laboratorio de Física Mecánica</div>
-    <div class="ramo" id="ICM1012">ICM1012 - Dibujo para Mecánica</div>
-  </div>
-
-  <!-- AÑO 2 -->
-  <div class="semestre">
-    <h2>Semestre 3</h2>
-    <div class="ramo" id="MAT1003" data-prerreq='["MAT1002"]'>MAT1003 - Cálculo en Varias Variables</div>
-    <div class="ramo" id="MAT1004" data-prerreq='["MAT1002"]'>MAT1004 - Álgebra Lineal</div>
-    <div class="ramo" id="ICM2010" data-prerreq='["MAT1002"]'>ICM2010 - Estadística Aplicada</div>
-    <div class="ramo" id="ICM2011" data-prerreq='["QUI1127"]'>ICM2011 - Ciencias de los Materiales</div>
-  </div>
-
-  <div class="semestre">
-    <h2>Semestre 4</h2>
-    <div class="ramo" id="MAT1005" data-prerreq='["MAT1003"]'>MAT1005 - Ecuaciones Diferenciales</div>
-    <div class="ramo" id="ICM2013" data-prerreq='["ICM2010"]'>ICM2013 - Estadística</div>
-    <div class="ramo" id="ICM2012" data-prerreq='["ICM2011"]'>ICM2012 - Metrología</div>
-    <div class="ramo" id="ICM2014" data-prerreq='["ICM2011"]'>ICM2014 - Materiales para Ingeniería</div>
-  </div>
-
-  <!-- AÑO 3 -->
-  <div class="semestre">
-    <h2>Semestre 5</h2>
-    <div class="ramo" id="MAT1007" data-prerreq='["MAT1005"]'>MAT1007 - Ecuaciones Diferenciales Parciales</div>
-    <div class="ramo" id="ICM3010" data-prerreq='["MAT1005", "FIS1001"]'>ICM3010 - Dinámica</div>
-    <div class="ramo" id="ICM3011" data-prerreq='["ICM2013"]'>ICM3011 - Termodinámica 1</div>
-    <div class="ramo" id="ING9001">ING9001 - Inglés 1</div>
-  </div>
-
-  <div class="semestre">
-    <h2>Semestre 6</h2>
-    <div class="ramo" id="ICM3013" data-prerreq='["MAT1005"]'>ICM3013 - Lenguaje de Programación</div>
-    <div class="ramo" id="ICM3014" data-prerreq='["ICM3011"]'>ICM3014 - Mecánica de Fluidos</div>
-    <div class="ramo" id="ICM3012" data-prerreq='["ICM2012", "ICM2013"]'>ICM3012 - Procesos de Fabricación 1</div>
-    <div class="ramo" id="ING9002">ING9002 - Inglés 2</div>
-  </div>
-
-  <!-- AÑO 4 -->
-  <div class="semestre">
-    <h2>Semestre 7</h2>
-    <div class="ramo" id="ICM4012" data-prerreq='["ICM3011"]'>ICM4012 - Termodinámica 2</div>
-    <div class="ramo" id="ICM4011" data-prerreq='["ICM3014"]'>ICM4011 - Mecánica de Materiales</div>
-    <div class="ramo" id="ICM4010" data-prerreq='["ICM3012"]'>ICM4010 - Procesos de Fabricación 2</div>
-    <div class="ramo" id="ING9003">ING9003 - Inglés 3</div>
-  </div>
-
-  <div class="semestre">
-    <h2>Semestre 8</h2>
-    <div class="ramo" id="ICM4015" data-prerreq='["ICM4011"]'>ICM4015 - Elementos de Máquinas</div>
-    <div class="ramo" id="ICM4013" data-prerreq='["ICM4011"]'>ICM4013 - Vibraciones Mecánicas</div>
-    <div class="ramo" id="ICM4016" data-prerreq='["ICM3014"]'>ICM4016 - Transferencia de Calor</div>
-    <div class="ramo" id="ICM4014" data-prerreq='["ICM4011"]'>ICM4014 - Electrotecnia</div>
-    <div class="ramo" id="ING9004">ING9004 - Inglés 4</div>
-  </div>
-
-  <!-- AÑO 5 -->
-  <div class="semestre">
-    <h2>Semestre 9</h2>
-    <div class="ramo" id="ICM5013" data-prerreq='["ICM4015"]'>ICM5013 - Turbomáquinas</div>
-    <div class="ramo" id="ICM5012" data-prerreq='["ICM4015", "ICM4013"]'>ICM5012 - Modelación Mecánica</div>
-    <div class="ramo" id="ICM5011" data-prerreq='["ICM4014"]'>ICM5011 - Automatización y Control</div>
-    <div class="ramo" id="ICM5010" data-prerreq='["ICM4016"]'>ICM5010 - Análisis de Falla</div>
-    <div class="ramo" id="ICM550">ICM550 - Evaluación de Proyectos</div>
-  </div>
-
-  <div class="semestre">
-    <h2>Semestre 10</h2>
-    <div class="ramo" id="ICM5014" data-prerreq='["ICM5011"]'>ICM5014 - Herramientas de Gestión</div>
-    <div class="ramo" id="ICM5016" data-prerreq='["ICM5012"]'>ICM5016 - Diseño Mecánico</div>
-    <div class="ramo" id="ICM5017" data-prerreq='["ICM5012"]'>ICM5017 - Proyecto de Titulación 1</div>
-    <div class="ramo" id="ICM5015" data-prerreq='["ICM5010"]'>ICM5015 - Optimización de Plantas</div>
-  </div>
-
-  <!-- AÑO 6 -->
-  <div class="semestre">
-    <h2>Semestre 11</h2>
-    <div class="ramo" id="ICM6010">ICM6010 - Administración de RR.HH.</div>
-    <div class="ramo" id="ICM6011" data-prerreq='["ICM5010"]'>ICM6011 - Gestión de Activos</div>
-    <div class="ramo" id="ICM6012" data-prerreq='["ICM5017"]'>ICM6012 - Proyecto de Ingeniería</div>
-     <div class="ramo" id="ICM6012" data-prerreq='["ICM550"]'>ICM6012 - Proyecto de Ingeniería</div>
-    <div class="ramo" id="ICM6013" data-prerreq='["ICM5017"]'>ICM6013 - Proyecto de Titulación 2</div>
-  </div>
-
- <div id="contenedor-semestres">
-  <!-- Aquí van todos tus <div class="semestre"> ... </div> -->
-</div> <!-- ESTE es el que cierra el contenedor -->
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
-
