@@ -1,57 +1,36 @@
-/* Estilo general de la página */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f7f7f7;
-  margin: 20px;
-  padding: 0;
+function cumplePrerrequisitos(prerreqs) {
+  return prerreqs.every(id => {
+    const ramo = document.getElementById(id);
+    return ramo && ramo.classList.contains("aprobado");
+  });
 }
 
-h1 {
-  text-align: center;
-  color: #222;
-  margin-bottom: 40px;
+function actualizarBloqueos() {
+  document.querySelectorAll(".ramo").forEach(ramo => {
+    const prerreqs = ramo.dataset.prerreq ? JSON.parse(ramo.dataset.prerreq) : [];
+
+    if (prerreqs.length > 0) {
+      if (cumplePrerrequisitos(prerreqs)) {
+        ramo.classList.remove("bloqueado");
+        ramo.style.opacity = 1;
+        ramo.style.pointerEvents = "auto";
+      } else {
+        ramo.classList.remove("aprobado"); // si pierde el requisito, se desmarca
+        ramo.classList.add("bloqueado");
+        ramo.style.opacity = 0.5;
+        ramo.style.pointerEvents = "none";
+      }
+    }
+  });
 }
 
-/* Contenedor por semestre */
-.semestre {
-  margin: 20px 0;
-  padding: 10px;
-  border: 2px solid #aaa;
-  background-color: #e0e0e0;
-  border-radius: 10px;
-}
+document.querySelectorAll(".ramo").forEach(ramo => {
+  ramo.addEventListener("click", () => {
+    if (ramo.classList.contains("bloqueado")) return;
 
-/* Título del semestre */
-.semestre h2 {
-  color: #444;
-  font-size: 1.3em;
-  margin-bottom: 10px;
-}
+    ramo.classList.toggle("aprobado");
+    actualizarBloqueos();
+  });
+});
 
-/* Estilo de cada ramo */
-.ramo {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  margin: 5px;
-  padding: 8px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-/* Cuando se marca como aprobado */
-.ramo.aprobado {
-  background-color: #c8e6c9;
-  border-color: #2e7d32;
-  text-decoration: line-through;
-  color: #2e7d32;
-}
-
-/* Cuando el ramo está bloqueado */
-.ramo.bloqueado {
-  background-color: #ddd;
-  cursor: not-allowed;
-  color: #777;
-  opacity: 0.5;
-  pointer-events: none;
-}
+window.onload = actualizarBloqueos;
