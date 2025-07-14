@@ -4,76 +4,6 @@
   <meta charset="UTF-8">
   <title>Malla Interactiva ICM</title>
   <link rel="stylesheet" href="estilos.css">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f7f7f7;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    h1 {
-      text-align: center;
-      color: #222;
-      margin-top: 20px;
-    }
-
-    #contenedor-semestres {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: nowrap;
-      overflow-x: auto;
-      gap: 20px;
-      padding: 30px;
-      margin-top: 20px;
-    }
-
-    .semestre {
-      min-width: 250px;
-      flex-shrink: 0;
-      background-color: #e0e0e0;
-      border: 2px solid #aaa;
-      border-radius: 10px;
-      padding: 10px;
-    }
-
-    .semestre h2 {
-      color: #444;
-      font-size: 1.3em;
-      margin-bottom: 10px;
-      text-align: center;
-    }
-
-    .ramo {
-      background-color: #fff;
-      border: 1px solid #ccc;
-      margin: 5px 0;
-      padding: 8px;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      text-align: center;
-      font-size: 0.9em;
-    }
-
-    .ramo.aprobado {
-      background-color: #c8e6c9;
-      border-color: #2e7d32;
-      color: #2e7d32;
-      text-decoration: line-through;
-    }
-
-    .ramo.bloqueado {
-      background-color: #ddd;
-      color: #777;
-      opacity: 0.5;
-      pointer-events: none;
-      cursor: not-allowed;
-    }
-  </style>
 </head>
 <body>
   <h1>Malla Interactiva - Ingeniería Civil Mecánica</h1>
@@ -83,93 +13,103 @@
     <!-- SEMESTRE 1 -->
     <div class="semestre">
       <h2>Semestre 1</h2>
-      <div class="ramo" id="MAT1001">Cálculo I</div>
-      <div class="ramo" id="FIS1010">Intro a la Física</div>
-      <div class="ramo" id="QUI1001">Química</div>
-      <div class="ramo" id="ICM1001">Intro Ing. Mecánica</div>
-      <div class="ramo" id="ING9001">Inglés I</div>
+      <div class="ramo" id="ICM1010">Intro a la Ing. Mecánica</div>
+      <div class="ramo" id="MAT1001">Fund. Matemáticas</div>
+      <div class="ramo" id="FIS1010">Fund. Física</div>
+      <div class="ramo" id="QUI127">Fund. Química</div>
+      <div class="ramo" id="FIN100-73">Comunicación y Desarrollo</div>
     </div>
 
     <!-- SEMESTRE 2 -->
     <div class="semestre">
       <h2>Semestre 2</h2>
-      <div class="ramo" id="MAT1002" data-prerreq='["MAT1001"]'>Cálculo II</div>
-      <div class="ramo" id="FIS1001" data-prerreq='["MAT1001", "FIS1010"]'>Física Mecánica</div>
-      <div class="ramo" id="FIS1002" data-prerreq='["MAT1001", "FIS1010"]'>Física Ondas</div>
-      <div class="ramo" id="ICM2010" data-prerreq='["MAT1001"]'>Rep. Gráfica</div>
-      <div class="ramo" id="ING9002" data-prerreq='["ING9001"]'>Inglés II</div>
+      <div class="ramo" id="MAT1002" data-prerreq='["MAT1001"]'>Cálculo Dif. e Integral</div>
+      <div class="ramo" id="FIS1001" data-prerreq='["MAT1001"]'>Física Mecánica</div>
+      <div class="ramo" id="FIS1012" data-prerreq='["MAT1001"]'>Lab. Física Mecánica</div>
+      <div class="ramo" id="ICM1012">Dibujo para Mecánica</div>
     </div>
 
     <!-- SEMESTRE 3 -->
     <div class="semestre">
       <h2>Semestre 3</h2>
-      <div class="ramo" id="MAT2001" data-prerreq='["MAT1002"]'>Cálculo III</div>
-      <div class="ramo" id="FIS2001" data-prerreq='["FIS1001"]'>Física Electromagnetismo</div>
-      <div class="ramo" id="ICM2001" data-prerreq='["ICM2010"]'>Materiales</div>
-      <div class="ramo" id="ING9003" data-prerreq='["ING9002"]'>Inglés III</div>
+      <div class="ramo" id="MAT1003" data-prerreq='["MAT1002"]'>Cálculo en Varias Variables</div>
+      <div class="ramo" id="MAT1004" data-prerreq='["MAT1002"]'>Álgebra Lineal</div>
+      <div class="ramo" id="ICM2010" data-prerreq='["MAT1001"]'>Estadística Aplicada</div>
+      <div class="ramo" id="ICM2011" data-prerreq='["QUI127"]'>Ciencias de los Materiales</div>
     </div>
 
     <!-- SEMESTRE 4 -->
     <div class="semestre">
       <h2>Semestre 4</h2>
-      <div class="ramo" id="MAT2002" data-prerreq='["MAT2001"]'>Ecuaciones Diferenciales</div>
-      <div class="ramo" id="ICM2002" data-prerreq='["ICM2001"]'>Mecánica de Sólidos</div>
-      <div class="ramo" id="ICM2003" data-prerreq='["ICM2010"]'>Dibujo Técnico</div>
-      <div class="ramo" id="ING9004" data-prerreq='["ING9003"]'>Inglés IV</div>
+      <div class="ramo" id="MAT1005" data-prerreq='["MAT1003"]'>Ecuaciones Diferenciales</div>
+      <div class="ramo" id="ICM2013" data-prerreq='["MAT1003","FIS1001"]'>Estática</div>
+      <div class="ramo" id="ICM2012" data-prerreq='["ICM2010"]'>Mediciones y Metrología</div>
+      <div class="ramo" id="ICM2014" data-prerreq='["ICM2011"]'>Materiales para Ingeniería</div>
     </div>
 
     <!-- SEMESTRE 5 -->
     <div class="semestre">
       <h2>Semestre 5</h2>
-      <div class="ramo" id="MAT3001" data-prerreq='["MAT2002"]'>Métodos Numéricos</div>
-      <div class="ramo" id="ICM3001" data-prerreq='["MAT1002", "FIS1001"]'>Mecánica de Fluidos</div>
-      <div class="ramo" id="ICM3002" data-prerreq='["MAT2002", "FIS1001"]'>Termodinámica</div>
-      <div class="ramo" id="ICM3003" data-prerreq='["ICM2001"]'>Procesos de Manufactura</div>
+      <div class="ramo" id="MAT1007" data-prerreq='["MAT1005"]'>Ecuaciones Dif. Parciales</div>
+      <div class="ramo" id="ICM3010" data-prerreq='["ICM2013"]'>Dinámica</div>
+      <div class="ramo" id="ICM3011" data-prerreq='["MAT1003","QUI127"]'>Termodinámica 1</div>
+      <div class="ramo" id="ING9001">Inglés 1</div>
     </div>
 
     <!-- SEMESTRE 6 -->
     <div class="semestre">
       <h2>Semestre 6</h2>
-      <div class="ramo" id="ICM3004" data-prerreq='["ICM3001"]'>Transferencia de Calor</div>
-      <div class="ramo" id="ICM3005" data-prerreq='["ICM3003"]'>Tecnología Mecánica</div>
-      <div class="ramo" id="ICM3006" data-prerreq='["MAT2002"]'>Análisis de Tensiones</div>
+      <div class="ramo" id="ICM3012" data-prerreq='["ICM2011"]'>Procesos de Fabricación 1</div>
+      <div class="ramo" id="ICM3013" data-prerreq='["MAT1005"]'>Lenguaje y Métodos Numéricos</div>
+      <div class="ramo" id="ICM3014" data-prerreq='["ICM3011","MAT1007"]'>Mecánica de Fluidos</div>
+      <div class="ramo" id="ING9002" data-prerreq='["ING9001"]'>Inglés 2</div>
     </div>
 
     <!-- SEMESTRE 7 -->
     <div class="semestre">
       <h2>Semestre 7</h2>
-      <div class="ramo" id="ICM4001" data-prerreq='["ICM3003", "ICM2002"]'>Diseño Mecánico</div>
-      <div class="ramo" id="ICM4002" data-prerreq='["ICM3004"]'>Instrumentación</div>
-      <div class="ramo" id="ICM4003" data-prerreq='["ICM3006"]'>Resistencia de Materiales</div>
+      <div class="ramo" id="ICM4012" data-prerreq='["ICM3011","ICM3014"]'>Termodinámica 2</div>
+      <div class="ramo" id="ICM4011" data-prerreq='["ICM2011"]'>Mecánica de Materiales</div>
+      <div class="ramo" id="ICM4010" data-prerreq='["ICM3012"]'>Procesos de Fabricación 2</div>
+      <div class="ramo" id="ING9003" data-prerreq='["ING9002"]'>Inglés 3</div>
     </div>
 
     <!-- SEMESTRE 8 -->
     <div class="semestre">
       <h2>Semestre 8</h2>
-      <div class="ramo" id="ICM4004" data-prerreq='["ICM4001"]'>Elementos Finitos</div>
-      <div class="ramo" id="ICM4005" data-prerreq='["ICM4002"]'>Automatización</div>
-      <div class="ramo" id="ICM4006" data-prerreq='["ICM3002"]'>Máquinas Térmicas</div>
+      <div class="ramo" id="ICM4014">Electrotecnia</div>
+      <div class="ramo" id="ICM4015" data-prerreq='["ICM4011","ICM3010"]'>Elementos de Máquinas</div>
+      <div class="ramo" id="ICM4013" data-prerreq='["ICM3010","MAT1007"]'>Vibraciones Mecánicas</div>
+      <div class="ramo" id="ICM4016" data-prerreq='["ICM3014","ICM4012"]'>Transferencia de Calor</div>
+      <div class="ramo" id="ING9004" data-prerreq='["ING9003"]'>Inglés 4</div>
     </div>
 
     <!-- SEMESTRE 9 -->
     <div class="semestre">
       <h2>Semestre 9</h2>
-      <div class="ramo" id="ICM5001" data-prerreq='["ICM4005"]'>Electrónica Industrial</div>
-      <div class="ramo" id="ICM5002" data-prerreq='["ICM4006"]'>Sistemas Energéticos</div>
-      <div class="ramo" id="ICM5003" data-prerreq='["ICM4004"]'>Vibraciones Mecánicas</div>
+      <div class="ramo" id="ICM5013" data-prerreq='["ICM4016"]'>Turbomáquinas</div>
+      <div class="ramo" id="ICM5012" data-prerreq='["ICM4011","ICM4016"]'>Modelación Mecánica</div>
+      <div class="ramo" id="ICM5010" data-prerreq='["ICM2014"]'>Análisis de Falla</div>
+      <div class="ramo" id="ICM5011" data-prerreq='["ICM4014"]'>Automatización y Control</div>
+      <div class="ramo" id="ICM550">Evaluación de Proyectos</div>
     </div>
 
     <!-- SEMESTRE 10 -->
     <div class="semestre">
       <h2>Semestre 10</h2>
-      <div class="ramo" id="ICM6001" data-prerreq='["ICM5003"]'>Proyecto de Título I</div>
-      <div class="ramo" id="ICM6002" data-prerreq='["ICM5002"]'>Evaluación de Proyectos</div>
+      <div class="ramo" id="ICM5014">Gestión de Producción</div>
+      <div class="ramo" id="ICM5016" data-prerreq='["ICM5012"]'>Diseño Mecánico</div>
+      <div class="ramo" id="ICM5017">Proyecto de Titulación 1</div>
+      <div class="ramo" id="ICM5015">Optimización e Ing. Plantas</div>
     </div>
 
     <!-- SEMESTRE 11 -->
     <div class="semestre">
       <h2>Semestre 11</h2>
-      <div class="ramo" id="ICM6003" data-prerreq='["ICM6001"]'>Proyecto de Título II</div>
+      <div class="ramo" id="ICM6010">Administración RR.HH.</div>
+      <div class="ramo" id="ICM6011" data-prerreq='["ICM5010"]'>Gestión de Activos</div>
+      <div class="ramo" id="ICM6012" data-prerreq='["ICM5015","ICM550"]'>Proyecto de Ingeniería</div>
+      <div class="ramo" id="ICM6013" data-prerreq='["ICM5017"]'>Proyecto de Titulación 2</div>
     </div>
 
   </div>
