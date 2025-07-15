@@ -1,5 +1,3 @@
-/* style.css */
-
 /* Variables CSS para colores */
 :root {
     --color-primary: #ffb6c1; /* Rosado claro (Base para semestres) */
@@ -42,12 +40,11 @@ body {
     font-size: 2em;
 }
 
-/* MODIFICADO: Contenedor principal para disposición horizontal */
+/* Contenedor principal para disposición horizontal */
 .malla-container {
     display: flex; /* Ahora los años se pondrán en fila */
     padding: 20px;
     gap: 25px; /* Espacio entre los años */
-    /* justify-content: center;  No siempre es necesario si hay mucho contenido */
     align-items: flex-start; /* Alinea los años por arriba */
     flex-wrap: nowrap; /* Evita que los años se envuelvan a la siguiente línea */
     height: calc(100vh - 100px); /* Ajusta la altura para que ocupe casi toda la pantalla */
@@ -121,7 +118,7 @@ body {
     box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
-/* Nuevos estilos para estados de ramos */
+/* Estilos para estados de ramos */
 .ramo.aprobado {
     background-color: var(--color-approved);
     color: var(--color-text-light);
