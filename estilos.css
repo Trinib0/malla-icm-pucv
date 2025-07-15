@@ -1,20 +1,21 @@
-/* Variables CSS para colores */
+/* Variables CSS para colores - Ajustados para un estilo más "TikTok" o vibrante */
 :root {
-    --color-primary: #ffb6c1; /* Rosado claro (Base para semestres) */
-    --color-secondary: #ff8fab; /* Rosado medio (Base para ramos) */
-    --color-tertiary: #c77b91; /* Rosado oscuro (Para títulos de año) */
+    --color-primary: #FF69B4; /* Rosa Chicle / Fucsia (Base para semestres) */
+    --color-secondary: #FFC0CB; /* Rosa claro (Base para ramos) */
+    --color-tertiary: #A020F0; /* Morado Vibrante (Para títulos de año) */
     --color-text-dark: #333;
     --color-text-light: #fff;
-    --color-background: #f0f2f5; /* Gris claro */
-    --color-hover: #ffd9e1;
-    --color-active: #ff6f9f; /* Para ramo seleccionado/clickeado */
+    --color-background: #F0F2F5; /* Gris claro suave */
+    --color-hover: #FFDAB9; /* Melocotón claro para hover en ramos */
+    --color-active: #FF4500; /* Naranja rojizo para ramo seleccionado/clickeado */
     --color-border: #ddd;
     --color-line: #999;
 
-    /* Nuevos colores para estados */
-    --color-approved: #8bc34a; /* Verde para aprobado */
-    --color-unlocked: #ffeb3b; /* Amarillo para desbloqueado (listo para tomar) */
-    --color-locked: #bdbdbd; /* Gris para bloqueado */
+    /* Nuevos colores para estados de ramos */
+    --color-approved: #28A745; /* Verde brillante para aprobado */
+    --color-unlocked: #FFD700; /* Dorado vibrante para desbloqueado (listo para tomar) */
+    --color-locked: #6C757D; /* Gris oscuro para bloqueado */
+    --color-warning: #FFC107; /* Amarillo para mensajes de advertencia */
 }
 
 body {
@@ -28,7 +29,7 @@ body {
 }
 
 .header {
-    background-color: var(--color-secondary);
+    background-color: var(--color-tertiary); /* Títulos con el morado vibrante */
     color: var(--color-text-light);
     padding: 20px 0;
     text-align: center;
@@ -37,74 +38,81 @@ body {
 
 .header h1 {
     margin: 0;
-    font-size: 2em;
+    font-size: 2.2em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2); /* Sombra para el texto del título */
 }
 
 /* Contenedor principal para disposición horizontal */
 .malla-container {
-    display: flex; /* Ahora los años se pondrán en fila */
-    padding: 20px;
-    gap: 25px; /* Espacio entre los años */
+    display: flex; /* Los años se colocarán en fila */
+    padding: 25px;
+    gap: 30px; /* Más espacio entre los años */
     align-items: flex-start; /* Alinea los años por arriba */
     flex-wrap: nowrap; /* Evita que los años se envuelvan a la siguiente línea */
-    height: calc(100vh - 100px); /* Ajusta la altura para que ocupe casi toda la pantalla */
-    overflow-y: hidden; /* Oculta el scroll vertical si no es necesario en el contenedor principal */
+    min-height: calc(100vh - 100px); /* Asegura que al menos ocupe la pantalla (resta altura del header) */
+    overflow-y: hidden; /* Oculta el scroll vertical del contenedor principal */
     overflow-x: auto; /* Permite scroll horizontal si la malla es muy ancha */
+    background-color: var(--color-background); /* Asegura el fondo del contenedor */
 }
 
 .ano {
     background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
-    padding: 20px;
-    min-width: 280px; /* Ancho mínimo para cada año */
+    border-radius: 15px; /* Bordes más redondeados */
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15); /* Sombra más pronunciada */
+    padding: 25px;
+    min-width: 300px; /* Ancho mínimo para cada año */
     flex-shrink: 0; /* Evita que los años se encojan */
-    display: flex; /* Para poner los semestres uno al lado del otro dentro del año */
-    flex-direction: column; /* Semestres se apilan verticalmente dentro del año */
-    gap: 15px; /* Espacio entre semestres */
-    height: 100%; /* Ocupa la altura disponible en el malla-container */
+    display: flex; /* Para que los semestres se apilen verticalmente */
+    flex-direction: column;
+    gap: 20px; /* Más espacio entre semestres dentro de un año */
+    border: 1px solid rgba(0,0,0,0.05); /* Borde suave */
 }
 
 .ano h2 {
     text-align: center;
     color: var(--color-tertiary);
     margin-top: 0;
-    margin-bottom: 20px;
-    font-size: 1.8em;
+    margin-bottom: 25px;
+    font-size: 2em;
+    font-weight: 700;
 }
 
 .semestre {
-    padding: 15px;
-    background-color: var(--color-primary);
-    border-radius: 8px;
-    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+    padding: 20px;
+    background-color: var(--color-primary); /* Usa el rosa chicle para los semestres */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.15); /* Sombra interna para profundidad */
     flex-grow: 1; /* Permite que los semestres crezcan y ocupen el espacio disponible */
     display: flex;
     flex-direction: column;
     justify-content: flex-start; /* Alinea los ramos al inicio del semestre */
+    border: 1px solid rgba(0,0,0,0.1);
 }
 
 .semestre h3 {
     text-align: center;
-    color: var(--color-text-dark);
+    color: var(--color-text-light); /* Texto blanco para mejor contraste con el rosa */
     margin-top: 0;
-    margin-bottom: 15px;
-    font-size: 1.2em;
+    margin-bottom: 18px;
+    font-size: 1.4em;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
 }
 
 .ramo {
-    background-color: var(--color-secondary);
-    color: var(--color-text-light);
-    padding: 12px 15px;
-    margin-bottom: 10px; /* Espacio entre ramos */
-    border-radius: 6px;
+    background-color: var(--color-secondary); /* Rosa claro para los ramos */
+    color: var(--color-text-dark); /* Texto oscuro para ramos no aprobados */
+    padding: 14px 18px;
+    margin-bottom: 12px; /* Espacio entre ramos */
+    border-radius: 8px; /* Bordes redondeados */
     cursor: pointer;
-    transition: all 0.2s ease-in-out;
+    transition: all 0.25s ease-in-out; /* Transición más suave */
     text-align: center;
     font-weight: 600;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.12); /* Sombra para los ramos */
     position: relative;
     z-index: 1;
+    border: 1px solid rgba(0,0,0,0.08); /* Borde suave */
 }
 
 .ramo:last-child {
@@ -112,69 +120,82 @@ body {
 }
 
 .ramo:hover {
-    background-color: var(--color-hover);
+    background-color: var(--color-hover); /* Color melocotón para hover */
     color: var(--color-text-dark);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    transform: translateY(-3px) scale(1.01); /* Efecto de "levantar" más pronunciado */
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
 }
 
 /* Estilos para estados de ramos */
 .ramo.aprobado {
-    background-color: var(--color-approved);
+    background-color: var(--color-approved); /* Verde brillante */
     color: var(--color-text-light);
-    border: 2px solid #5cb85c;
-    box-shadow: 0 0 0 2px var(--color-approved), 0 0 8px rgba(0,0,0,0.2);
+    border: 2px solid #218838; /* Borde verde más oscuro */
+    box-shadow: 0 0 0 3px var(--color-approved), 0 0 10px rgba(0,0,0,0.3); /* Sombra con halo verde */
     cursor: pointer; /* Aún puede ser desaprobado */
+    font-weight: 700;
 }
 
 .ramo.desbloqueado {
-    background-color: var(--color-unlocked);
+    background-color: var(--color-unlocked); /* Dorado vibrante */
     color: var(--color-text-dark); /* Texto oscuro para contraste en amarillo */
-    border: 2px solid #ffc107;
+    border: 2px solid #DAA520; /* Borde dorado más oscuro */
+    box-shadow: 0 0 0 2px var(--color-unlocked), 0 0 8px rgba(0,0,0,0.25);
     cursor: pointer; /* Se puede aprobar */
+    animation: pulse-desbloqueado 1.5s infinite alternate; /* Animación de pulsación */
+}
+
+@keyframes pulse-desbloqueado {
+    from { transform: scale(1); }
+    to { transform: scale(1.01); box-shadow: 0 0 0 2px var(--color-unlocked), 0 0 12px rgba(255,215,0,0.5); }
 }
 
 .ramo.bloqueado {
-    background-color: var(--color-locked);
+    background-color: var(--color-locked); /* Gris oscuro */
     color: var(--color-text-light); /* Texto blanco para contraste en gris */
-    border: 2px solid #9e9e9e;
+    border: 2px solid #5A6268;
     cursor: not-allowed; /* No se puede aprobar */
-    opacity: 0.7; /* Ligeramente transparente */
+    opacity: 0.8; /* Ligeramente transparente */
+    text-decoration: line-through; /* Tachado para indicar que no está disponible */
 }
 
 
 /* Estilos para los prerrequisitos resaltados (al hover) */
 .ramo.prerequisite-highlight {
-    background-color: #a0e0a0; /* Un verde suave */
+    background-color: #90EE90; /* Verde pastel */
     color: var(--color-text-dark);
-    transform: scale(1.02);
-    box-shadow: 0 0 0 2px #5cb85c, 0 0 8px rgba(0,0,0,0.2);
+    transform: scale(1.03);
+    box-shadow: 0 0 0 3px #3CB371, 0 0 10px rgba(0,0,0,0.3); /* Borde verde y sombra */
+    z-index: 2; /* Para que esté por encima de otros ramos */
 }
 
 .ramo.consequence-highlight {
-    background-color: #add8e6; /* Un azul claro */
+    background-color: #ADD8E6; /* Azul celeste */
     color: var(--color-text-dark);
-    transform: scale(1.02);
-    box-shadow: 0 0 0 2px #5bc0de, 0 0 8px rgba(0,0,0,0.2);
+    transform: scale(1.03);
+    box-shadow: 0 0 0 3px #1E90FF, 0 0 10px rgba(0,0,0,0.3); /* Borde azul y sombra */
+    z-index: 2; /* Para que esté por encima de otros ramos */
 }
 
 /* Tooltip para mostrar información del ramo */
 .tooltip {
     position: absolute;
-    background-color: rgba(0, 0, 0, 0.85);
+    background-color: rgba(0, 0, 0, 0.9); /* Fondo casi negro transparente */
     color: var(--color-text-light);
-    padding: 10px 15px;
-    border-radius: 5px;
-    font-size: 0.9em;
-    pointer-events: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-size: 0.95em;
+    pointer-events: none; /* Ignora eventos del ratón para no interferir */
     opacity: 0;
-    transition: opacity 0.2s, transform 0.2s;
-    transform: translate(-50%, -10px);
-    z-index: 1000;
-    white-space: nowrap;
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Transición más suave */
+    transform: translate(-50%, -15px); /* Un poco más arriba */
+    z-index: 2000; /* Asegura que esté por encima de todo */
+    white-space: nowrap; /* Evita que el texto del tooltip se rompa */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    border: 1px solid rgba(255,255,255,0.1); /* Borde ligero */
 }
 
 .tooltip.active {
     opacity: 1;
-    transform: translate(-50%, 0);
+    transform: translate(-50%, 0); /* Baja a su posición final */
 }
