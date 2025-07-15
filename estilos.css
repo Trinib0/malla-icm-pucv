@@ -1,36 +1,158 @@
-function cumplePrerrequisitos(prerreqs) {
-  return prerreqs.every(id => {
-    const ramo = document.getElementById(id);
-    return ramo && ramo.classList.contains("aprobado");
-  });
+/* Variables CSS para colores */
+:root {
+    --color-primary: #ffb6c1; /* Rosado claro */
+    --color-secondary: #ff8fab; /* Rosado medio */
+    --color-tertiary: #c77b91; /* Rosado oscuro */
+    --color-text-dark: #333;
+    --color-text-light: #fff;
+    --color-background: #f0f2f5; /* Gris claro */
+    --color-hover: #ffd9e1;
+    --color-active: #ff6f9f;
+    --color-border: #ddd;
+    --color-line: #999;
 }
 
-function actualizarBloqueos() {
-  document.querySelectorAll(".ramo").forEach(ramo => {
-    const prerreqs = ramo.dataset.prerreq ? JSON.parse(ramo.dataset.prerreq) : [];
-
-    if (prerreqs.length > 0) {
-      if (cumplePrerrequisitos(prerreqs)) {
-        ramo.classList.remove("bloqueado");
-        ramo.style.opacity = 1;
-        ramo.style.pointerEvents = "auto";
-      } else {
-        ramo.classList.remove("aprobado"); // si pierde el requisito, se desmarca
-        ramo.classList.add("bloqueado");
-        ramo.style.opacity = 0.5;
-        ramo.style.pointerEvents = "none";
-      }
-    }
-  });
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-background);
+    color: var(--color-text-dark);
+    line-height: 1.6;
+    overflow-x: auto; /* Permite desplazamiento horizontal si la malla es muy ancha */
 }
 
-document.querySelectorAll(".ramo").forEach(ramo => {
-  ramo.addEventListener("click", () => {
-    if (ramo.classList.contains("bloqueado")) return;
+.header {
+    background-color: var(--color-secondary);
+    color: var(--color-text-light);
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
 
-    ramo.classList.toggle("aprobado");
-    actualizarBloqueos();
-  });
-});
+.header h1 {
+    margin: 0;
+    font-size: 2em;
+}
 
-window.onload = actualizarBloqueos;
+.malla-container {
+    display: flex; /* Para organizar los años horizontalmente */
+    padding: 20px;
+    gap: 25px; /* Espacio entre los años */
+    justify-content: center; /* Centra los años si caben en pantalla */
+    align-items: flex-start; /* Alinea los años por arriba */
+    flex-wrap: nowrap; /* Evita que los años se envuelvan a la siguiente línea */
+}
+
+.ano {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+    padding: 20px;
+    min-width: 280px; /* Ancho mínimo para cada año */
+    flex-shrink: 0; /* Evita que los años se encojan */
+}
+
+.ano h2 {
+    text-align: center;
+    color: var(--color-tertiary);
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+.semestre {
+    margin-bottom: 25px; /* Espacio entre semestres */
+    padding: 15px;
+    background-color: var(--color-primary);
+    border-radius: 8px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.semestre h3 {
+    text-align: center;
+    color: var(--color-text-dark);
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+.ramo {
+    background-color: var(--color-secondary);
+    color: var(--color-text-light);
+    padding: 12px 15px;
+    margin-bottom: 10px; /* Espacio entre ramos */
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    text-align: center;
+    font-weight: 600;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: relative; /* Necesario para la línea de prerrequisitos */
+    z-index: 1; /* Asegura que el ramo esté sobre la línea */
+}
+
+.ramo:last-child {
+    margin-bottom: 0;
+}
+
+.ramo:hover {
+    background-color: var(--color-hover);
+    color: var(--color-text-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.ramo.selected {
+    background-color: var(--color-active);
+    color: var(--color-text-light);
+    box-shadow: 0 0 0 3px var(--color-active), 0 0 10px rgba(0,0,0,0.3); /* Resaltado fuerte */
+}
+
+/* Estilos para los prerrequisitos resaltados */
+.ramo.prerequisite-highlight {
+    background-color: #a0e0a0; /* Un verde suave */
+    color: var(--color-text-dark);
+    transform: scale(1.02);
+    box-shadow: 0 0 0 2px #5cb85c, 0 0 8px rgba(0,0,0,0.2);
+}
+
+.ramo.consequence-highlight {
+    background-color: #add8e6; /* Un azul claro */
+    color: var(--color-text-dark);
+    transform: scale(1.02);
+    box-shadow: 0 0 0 2px #5bc0de, 0 0 8px rgba(0,0,0,0.2);
+}
+
+
+/* Tooltip para mostrar información del ramo */
+.tooltip {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.85);
+    color: var(--color-text-light);
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    pointer-events: none; /* Permite que el mouse pase a través del tooltip */
+    opacity: 0;
+    transition: opacity 0.2s, transform 0.2s;
+    transform: translate(-50%, -10px); /* Inicialmente un poco arriba y centrado */
+    z-index: 1000;
+    white-space: nowrap; /* Evita que el texto del tooltip se rompa en varias líneas */
+}
+
+.tooltip.active {
+    opacity: 1;
+    transform: translate(-50%, 0); /* Baja a la posición normal */
+}
+
+/* Estilos para las líneas de conexión (más avanzado) */
+.lines-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Es crucial para no bloquear clics en los ramos */
+    z-index: 0; /* Asegura que las líneas estén detrás de los ramos */
+}
