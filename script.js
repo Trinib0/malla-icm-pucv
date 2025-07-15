@@ -1,3 +1,50 @@
+document.addEventListener("DOMContentLoaded", function () {
+  const ramos = document.querySelectorAll(".ramo");
+
+  // Crea un mapa con los prerrequisitos de cada ramo
+  const mapa = {};
+  ramos.forEach(ramo => {
+    const id = ramo.id;
+    const prerreq = ramo.dataset.prerreq ? JSON.parse(ramo.dataset.prerreq) : [];
+    mapa[id] = { el: ramo, prerreq };
+  });
+
+  // Verifica si todos los prerrequisitos de un ramo están aprobados
+  function puedeActivarse(id) {
+    return mapa[id].prerreq.every(pr => mapa[pr].el.classList.contains("aprobado"));
+  }
+
+  // Revisa y actualiza el estado de todos los ramos
+  function actualizarEstado() {
+    Object.keys(mapa).forEach(id => {
+      const ramo = mapa[id].el;
+
+      // Si no está aprobado y no cumple los requisitos → bloquear
+      if (!ramo.classList.contains("aprobado") && !puedeActivarse(id)) {
+        ramo.classList.add("bloqueado");
+      } else {
+        ramo.classList.remove("bloqueado");
+      }
+    });
+  }
+
+  // Cuando haces clic en un ramo
+  ramos.forEach(ramo => {
+    ramo.addEventListener("click", function () {
+      // Si está bloqueado, no hacer nada
+      if (ramo.classList.contains("bloqueado")) return;
+
+      // Cambia el estado: aprobado o no aprobado
+      ramo.classList.toggle("aprobado");
+
+      // Vuelve a revisar todos los estados
+      actualizarEstado();
+    });
+  });
+
+  // Revisión inicial al cargar la página
+  actualizarEstado();
+});
 // script.js
 
 // ----------------------------------------------------
