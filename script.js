@@ -2,7 +2,7 @@
 
 // ----------------------------------------------------
 // 1. Datos de la Malla
-//    Asegúrate de que 'aprobado: false' esté en cada ramo.
+//    Cada ramo tiene un 'id', 'nombre', lista de 'prerrequisitos' y un estado 'aprobado'.
 // ----------------------------------------------------
 
 const malla = [
@@ -154,35 +154,38 @@ malla.forEach(ano => {
 // Función para verificar si un ramo está desbloqueado (todos sus prerrequisitos están aprobados)
 function isRamoUnlocked(ramoId) {
     const ramo = ramosMap.get(ramoId);
-    if (!ramo) return false;
-    // Si no tiene prerrequisitos, siempre está desbloqueado
+    if (!ramo) return false; // Si el ramo no existe en los datos, no puede estar desbloqueado
+    // Si no tiene prerrequisitos, siempre está desbloqueado (se puede tomar desde el inicio)
     if (ramo.prerrequisitos.length === 0) {
         return true;
     }
-    // Verifica si todos sus prerrequisitos están aprobados
+    // Verifica si *todos* sus prerrequisitos están marcados como aprobados
     return ramo.prerrequisitos.every(prereqId => {
         const prereqRamo = ramosMap.get(prereqId);
+        // El prerrequisito debe existir y estar aprobado
         return prereqRamo && prereqRamo.aprobado;
     });
 }
 
-// Función para actualizar las clases de CSS de todos los ramos en el DOM
+// Función principal para actualizar las clases de CSS de todos los ramos en el DOM
+// Esto es CRUCIAL para que los colores se actualicen después de cada interacción
 function updateRamoStates() {
     document.querySelectorAll('.ramo').forEach(ramoDiv => {
         const ramoId = ramoDiv.dataset.id;
         const ramoInfo = ramosMap.get(ramoId);
 
-        // Limpiar todas las clases de estado anteriores
+        // Limpiar todas las clases de estado anteriores (para que no se acumulen)
         ramoDiv.classList.remove('aprobado', 'bloqueado', 'desbloqueado');
 
         if (ramoInfo.aprobado) {
+            // Si el ramo está marcado como aprobado en los datos
             ramoDiv.classList.add('aprobado');
         } else {
-            // Si no está aprobado, verificamos si está desbloqueado o bloqueado
+            // Si el ramo NO está aprobado, verificamos si puede ser tomado (está desbloqueado)
             if (isRamoUnlocked(ramoId)) {
-                ramoDiv.classList.add('desbloqueado');
+                ramoDiv.classList.add('desbloqueado'); // Está listo para tomar
             } else {
-                ramoDiv.classList.add('bloqueado');
+                ramoDiv.classList.add('bloqueado'); // Faltan prerrequisitos, no se puede tomar aún
             }
         }
     });
@@ -192,7 +195,10 @@ function updateRamoStates() {
 document.addEventListener('DOMContentLoaded', () => {
     const mallaContainer = document.querySelector('.malla-container');
 
-    // Generación inicial de la malla en HTML
+    // ----------------------------------------------------
+    // 2. Generación Dinámica de la Malla en HTML
+    //    Este código crea los divs para años, semestres y ramos basados en los datos.
+    // ----------------------------------------------------
     malla.forEach(anoData => {
         const anoDiv = document.createElement('div');
         anoDiv.classList.add('ano');
@@ -206,8 +212,8 @@ document.addEventListener('DOMContentLoaded', () => {
             semestreData.ramos.forEach(ramoData => {
                 const ramoDiv = document.createElement('div');
                 ramoDiv.classList.add('ramo');
-                ramoDiv.dataset.id = ramoData.id; // Guarda el ID para fácil acceso
-                ramoDiv.textContent = `${ramoData.id} - ${ramoData.nombre}`;
+                ramoDiv.dataset.id = ramoData.id; // Almacena el ID del ramo en un atributo de datos HTML
+                ramoDiv.textContent = `${ramoData.id} - ${ramoData.nombre}`; // Muestra ID y nombre
                 semestreDiv.appendChild(ramoDiv);
             });
             anoDiv.appendChild(semestreDiv);
@@ -215,7 +221,8 @@ document.addEventListener('DOMContentLoaded', () => {
         mallaContainer.appendChild(anoDiv);
     });
 
-    // **IMPORTANTE**: Inicializar los estados visuales de los ramos al cargar
+    // **IMPORTANTE**: Llama a esta función para establecer los estados iniciales de todos los ramos
+    // (Por ejemplo, los ramos sin prerrequisitos se mostrarán como "desbloqueados" al inicio)
     updateRamoStates();
 
 
@@ -223,36 +230,42 @@ document.addEventListener('DOMContentLoaded', () => {
     // 3. Interactividad (Clic para Aprobar/Desaprobar, Hover para Resaltar)
     // ----------------------------------------------------
 
-    const ramos = document.querySelectorAll('.ramo');
-    const tooltip = document.getElementById('tooltip');
+    const ramosHTML = document.querySelectorAll('.ramo'); // Obtiene todos los elementos HTML de los ramos
+    const tooltip = document.getElementById('tooltip'); // Obtiene el elemento del tooltip
 
-    ramos.forEach(ramoDiv => {
+    ramosHTML.forEach(ramoDiv => {
         // Evento principal para APROBAR/DESAPROBAR un ramo
         ramoDiv.addEventListener('click', (event) => {
-            const ramoId = event.target.dataset.id;
-            const ramoInfo = ramosMap.get(ramoId);
+            const ramoId = event.target.dataset.id; // Obtiene el ID del ramo clicado
+            const ramoInfo = ramosMap.get(ramoId); // Obtiene los datos del ramo de nuestro mapa
 
-            // Si el ramo no está aprobado Y no está desbloqueado, no se puede aprobar.
-            // Es decir, solo se puede aprobar si ya está aprobado o si todos sus prerrequisitos están completos.
+            // Lógica para permitir o denegar la aprobación:
+            // Solo se puede aprobar un ramo si:
+            // 1. Ya está aprobado (para desaprobarlo)
+            // 2. No está aprobado PERO todos sus prerrequisitos están completos (está desbloqueado)
             if (!ramoInfo.aprobado && !isRamoUnlocked(ramoId)) {
+                // Si el ramo no está aprobado Y no está desbloqueado (le faltan prerrequisitos)
                 console.log(`Ramo ${ramoId} bloqueado. No puedes aprobarlo sin sus prerrequisitos.`);
-                // Opcional: mostrar tooltip de "bloqueado"
+                
+                // Mostrar un mensaje en el tooltip para el usuario
                 tooltip.innerHTML = `<strong>${ramoInfo.nombre}</strong><br>¡Bloqueado! Faltan prerrequisitos.`;
                 tooltip.classList.add('active');
                 tooltip.style.left = `${event.pageX + 15}px`;
                 tooltip.style.top = `${event.pageY + 15}px`;
-                setTimeout(() => tooltip.classList.remove('active'), 1500); // Ocultar después de 1.5s
-                return; // Salir de la función si está bloqueado
+                // Ocultar el tooltip después de un breve tiempo
+                setTimeout(() => tooltip.classList.remove('active'), 1500); 
+                return; // Detiene la función, no se cambia el estado del ramo
             }
 
-            // Alternar el estado 'aprobado' en los datos
-            ramoInfo.aprobado = !ramoInfo.aprobado;
+            // Si se llegó hasta aquí, significa que se puede alternar el estado de aprobación
+            ramoInfo.aprobado = !ramoInfo.aprobado; // Cambia el estado 'aprobado' en los datos del ramo
 
-            // **CRUCIAL**: Recalcular y aplicar los estados visuales a *todos* los ramos después de cada cambio
+            // **CRUCIAL**: Vuelve a calcular y aplicar los estados visuales a *TODOS* los ramos.
+            // Esto es lo que hará que otros ramos (que ahora cumplen sus prerrequisitos) se "desbloqueen"
             updateRamoStates();
 
-            // Limpiar cualquier resaltado temporal (prerreq/consecuencias) y el tooltip al hacer clic
-            ramos.forEach(r => {
+            // Limpiar cualquier resaltado temporal (prerrequisitos/consecuencias) y el tooltip
+            ramosHTML.forEach(r => {
                 r.classList.remove('prerequisite-highlight', 'consequence-highlight');
             });
             tooltip.classList.remove('active');
@@ -265,11 +278,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const ramoInfo = ramosMap.get(ramoId);
 
             // Limpiar cualquier resaltado anterior de prerrequisitos/consecuencias en todos los ramos
-            ramos.forEach(r => {
+            ramosHTML.forEach(r => {
                 r.classList.remove('prerequisite-highlight', 'consequence-highlight');
             });
 
-            // Resaltar los prerrequisitos del ramo actual
+            // Resaltar los prerrequisitos del ramo sobre el que se encuentra el ratón
             if (ramoInfo && ramoInfo.prerrequisitos.length > 0) {
                 ramoInfo.prerrequisitos.forEach(prereqId => {
                     const prereqDiv = document.querySelector(`.ramo[data-id="${prereqId}"]`);
@@ -279,7 +292,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
 
-            // Resaltar los ramos que tienen este como prerrequisito (consecuencias)
+            // Resaltar los ramos que tienen este como prerrequisito (sus "consecuencias")
             ramosMap.forEach(r => {
                 if (r.prerrequisitos.includes(ramoId)) {
                     const consequenceDiv = document.querySelector(`.ramo[data-id="${r.id}"]`);
@@ -289,13 +302,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
-            // Mostrar tooltip con información
+            // Mostrar tooltip con información del ramo
             if (ramoInfo) {
                 let tooltipContent = `<strong>${ramoInfo.nombre}</strong><br>`;
                 if (ramoInfo.prerrequisitos.length > 0) {
                     const prerrequisitoNombres = ramoInfo.prerrequisitos
-                        .map(id => ramosMap.get(id) ? ramosMap.get(id).nombre : id) // Obtiene el nombre si existe
-                        .join(', ');
+                        .map(id => ramosMap.get(id) ? ramosMap.get(id).nombre : id) // Mapea IDs a nombres
+                        .join(', '); // Une los nombres con comas
                     tooltipContent += `Prerrequisitos: ${prerrequisitoNombres}`;
                 } else {
                     tooltipContent += "Sin prerrequisitos";
@@ -309,20 +322,18 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Ocultar resaltados y tooltip al quitar el ratón
+        // Ocultar resaltados y tooltip al quitar el ratón de un ramo
         ramoDiv.addEventListener('mouseleave', () => {
-            ramos.forEach(r => {
+            ramosHTML.forEach(r => {
                 r.classList.remove('prerequisite-highlight', 'consequence-highlight');
             });
             tooltip.classList.remove('active');
         });
     });
 
-    // Opcional: Si quieres que el tooltip se oculte al hacer clic en cualquier parte de la página,
-    // o que el resaltado de "selected" se borre (aunque el click en el ramo ya gestiona esto)
+    // Opcional: Esto borra el tooltip si haces clic en cualquier parte de la página que no sea un ramo.
     // document.addEventListener('click', (event) => {
     //     if (!event.target.closest('.ramo')) {
-    //         ramos.forEach(r => r.classList.remove('selected', 'prerequisite-highlight', 'consequence-highlight'));
     //         tooltip.classList.remove('active');
     //     }
     // });
