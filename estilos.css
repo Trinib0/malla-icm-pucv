@@ -1,3 +1,9 @@
+.ramo.aprobado {
+  background-color: #c8e6c9;
+  border-color: #2e7d32;
+  color: #2e7d32;
+  text-decoration: line-through;
+}
 body {
   font-family: Arial, sans-serif;
   background-color: #f7f7f7;
