@@ -1,3 +1,12 @@
+#contenedor-semestres {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 20px;
+  padding: 30px;
+  margin-top: 20px;
+}
 body {
   font-family: Arial, sans-serif;
   background-color: #f7f7f7;
