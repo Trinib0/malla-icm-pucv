@@ -1,55 +1,8 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const ramos = document.querySelectorAll(".ramo");
-
-  // Crea un mapa con los prerrequisitos de cada ramo
-  const mapa = {};
-  ramos.forEach(ramo => {
-    const id = ramo.id;
-    const prerreq = ramo.dataset.prerreq ? JSON.parse(ramo.dataset.prerreq) : [];
-    mapa[id] = { el: ramo, prerreq };
-  });
-
-  // Verifica si todos los prerrequisitos de un ramo están aprobados
-  function puedeActivarse(id) {
-    return mapa[id].prerreq.every(pr => mapa[pr].el.classList.contains("aprobado"));
-  }
-
-  // Revisa y actualiza el estado de todos los ramos
-  function actualizarEstado() {
-    Object.keys(mapa).forEach(id => {
-      const ramo = mapa[id].el;
-
-      // Si no está aprobado y no cumple los requisitos → bloquear
-      if (!ramo.classList.contains("aprobado") && !puedeActivarse(id)) {
-        ramo.classList.add("bloqueado");
-      } else {
-        ramo.classList.remove("bloqueado");
-      }
-    });
-  }
-
-  // Cuando haces clic en un ramo
-  ramos.forEach(ramo => {
-    ramo.addEventListener("click", function () {
-      // Si está bloqueado, no hacer nada
-      if (ramo.classList.contains("bloqueado")) return;
-
-      // Cambia el estado: aprobado o no aprobado
-      ramo.classList.toggle("aprobado");
-
-      // Vuelve a revisar todos los estados
-      actualizarEstado();
-    });
-  });
-
-  // Revisión inicial al cargar la página
-  actualizarEstado();
-});
 // script.js
 
 // ----------------------------------------------------
 // 1. Datos de la Malla
-//    Cada ramo tiene un 'id', 'nombre', lista de 'prerrequisitos' y un estado 'aprobado'.
+//    Cada ramo tiene un 'id', 'nombre', lista de 'prerrequisitos' y un estado 'aprobado'.
 // ----------------------------------------------------
 
 const malla = [
@@ -62,8 +15,8 @@ const malla = [
                     { id: "ICM1010", nombre: "Introducción a la ingeniería mecánica", prerrequisitos: [], aprobado: false },
                     { id: "MAT1001", nombre: "Fundamentos de matemáticas para ingeniería", prerrequisitos: [], aprobado: false },
                     { id: "FIS1010", nombre: "Fundamentos de física", prerrequisitos: [], aprobado: false },
-                    { id: "QUI127", nombre: "Fundamentos de química", prerrequisitos: [], aprobado: false },
-                    { id: "FIN100-73", nombre: "Comunicación efectiva y desarrollo profesional e integral", prerrequisitos: [], aprobado: false }
+                    { id: "QUI1127", nombre: "Fundamentos de química", prerrequisitos: [], aprobado: false }, // Corregido QUI127 a QUI1127
+                    { id: "COM100-73", nombre: "Comunicación efectiva y desarrollo profesional e integral", prerrequisitos: [], aprobado: false } // Corregido FIN100-73 a COM100-73
                 ]
             },
             {
@@ -86,7 +39,7 @@ const malla = [
                     { id: "MAT1003", nombre: "Cálculo en varias variables", prerrequisitos: ["MAT1002"], aprobado: false },
                     { id: "MAT1004", nombre: "Álgebra lineal", prerrequisitos: ["MAT1002"], aprobado: false },
                     { id: "ICM2010", nombre: "Estadística aplicada", prerrequisitos: ["MAT1001"], aprobado: false },
-                    { id: "ICM2011", nombre: "Ciencias de los materiales", prerrequisitos: ["QUI127"], aprobado: false }
+                    { id: "ICM2011", nombre: "Ciencias de los materiales", prerrequisitos: ["QUI1127"], aprobado: false } // Corregido QUI127 a QUI1127
                 ]
             },
             {
@@ -108,7 +61,7 @@ const malla = [
                 ramos: [
                     { id: "MAT1007", nombre: "Ecuaciones diferenciales parciales", prerrequisitos: ["MAT1005"], aprobado: false },
                     { id: "ICM3010", nombre: "Dinámica", prerrequisitos: ["ICM2013"], aprobado: false },
-                    { id: "ICM3011", nombre: "Termodinámica 1", prerrequisitos: ["MAT1003", "QUI127"], aprobado: false },
+                    { id: "ICM3011", nombre: "Termodinámica 1", prerrequisitos: ["MAT1003", "QUI1127"], aprobado: false }, // Corregido QUI127 a QUI1127
                     { id: "ING9001", nombre: "Inglés 1", prerrequisitos: [], aprobado: false }
                 ]
             },
@@ -157,7 +110,7 @@ const malla = [
                     { id: "ICM5012", nombre: "Modelación mecánica", prerrequisitos: ["ICM4011", "ICM4016"], aprobado: false },
                     { id: "ICM5010", nombre: "Análisis de falla y monitoreo de condiciones", prerrequisitos: ["ICM2014"], aprobado: false },
                     { id: "ICM5011", nombre: "Automatización y control", prerrequisitos: ["ICM4014"], aprobado: false },
-                    { id: "ICM550", nombre: "Evaluación de proyectos", prerrequisitos: [], aprobado: false }
+                    { id: "ING9600", nombre: "Evaluación de proyectos", prerrequisitos: [], aprobado: false } // Corregido ICM550 a ING9600
                 ]
             },
             {
@@ -179,7 +132,7 @@ const malla = [
                 ramos: [
                     { id: "ICM6010", nombre: "Administración de RR.HH.", prerrequisitos: [], aprobado: false },
                     { id: "ICM6011", nombre: "Gestión de activos y confiabilidad", prerrequisitos: ["ICM5010"], aprobado: false },
-                    { id: "ICM6012", nombre: "Proyecto de ingeniería", prerrequisitos: ["ICM5015", "ICM550"], aprobado: false },
+                    { id: "ICM6012", nombre: "Proyecto de ingeniería", prerrequisitos: ["ICM5015", "ING9600"], aprobado: false }, // Corregido ICM550 a ING9600
                     { id: "ICM6013", nombre: "Proyecto de titulación 2", prerrequisitos: ["ICM5017"], aprobado: false }
                 ]
             }
@@ -240,11 +193,11 @@ function updateRamoStates() {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    const mallaContainer = document.querySelector('.malla-container');
+    const mallaContainer = document.getElementById('malla-container'); // Cambiado a getElementById
 
     // ----------------------------------------------------
     // 2. Generación Dinámica de la Malla en HTML
-    //    Este código crea los divs para años, semestres y ramos basados en los datos.
+    //    Este código crea los divs para años, semestres y ramos basados en los datos.
     // ----------------------------------------------------
     malla.forEach(anoData => {
         const anoDiv = document.createElement('div');
@@ -376,52 +329,5 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             tooltip.classList.remove('active');
         });
-    });document.addEventListener("DOMContentLoaded", function () {
-  const ramos = document.querySelectorAll(".ramo");
-
-  // Mapa con prerrequisitos por ramo
-  const mapa = {};
-  ramos.forEach(ramo => {
-    const id = ramo.id;
-    const prerreq = ramo.dataset.prerreq ? JSON.parse(ramo.dataset.prerreq) : [];
-    mapa[id] = { el: ramo, prerreq };
-  });
-
-  // Verifica si un ramo puede activarse según sus prerrequisitos
-  function puedeActivarse(id) {
-    return mapa[id].prerreq.every(pr => mapa[pr].el.classList.contains("aprobado"));
-  }
-
-  // Actualiza estado de todos los ramos
-  function actualizarEstado() {
-    Object.keys(mapa).forEach(id => {
-      const ramo = mapa[id].el;
-      if (!ramo.classList.contains("aprobado") && !puedeActivarse(id)) {
-        ramo.classList.add("bloqueado");
-      } else {
-        ramo.classList.remove("bloqueado");
-      }
     });
-  }
-
-  // Evento click: aprobar/desaprobar ramos
-  ramos.forEach(ramo => {
-    ramo.addEventListener("click", function () {
-      if (ramo.classList.contains("bloqueado")) return;
-      ramo.classList.toggle("aprobado");
-      actualizarEstado();
-    });
-  });
-
-  // Estado inicial
-  actualizarEstado();
-});
-
-
-    // Opcional: Esto borra el tooltip si haces clic en cualquier parte de la página que no sea un ramo.
-    // document.addEventListener('click', (event) => {
-    //     if (!event.target.closest('.ramo')) {
-    //         tooltip.classList.remove('active');
-    //     }
-    // });
 });

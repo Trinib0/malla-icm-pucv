@@ -1,352 +1,142 @@
-#contenedor-semestres {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  gap: 20px;
-  padding: 30px;
-  margin-top: 20px;
-}
+/* estilos.css */
+
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f7f7f7;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f4f4f4;
+    color: #333;
 }
 
 h1 {
-  text-align: center;
-  color: #222;
-  margin-top: 20px;
-}
-
-#contenedor-semestres {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  gap: 20px;
-  padding: 30px;
-  margin-top: 20px;
-}
-
-.semestre {
-  min-width: 250px;
-  flex-shrink: 0;
-  background-color: #e0e0e0;
-  border: 2px solid #aaa;
-  border-radius: 10px;
-  padding: 10px;
-}
-
-.semestre h2 {
-  color: #444;
-  font-size: 1.3em;
-  margin-bottom: 10px;
-  text-align: center;
-}
-
-.ramo {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  margin: 5px 0;
-  padding: 8px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  text-align: center;
-  font-size: 0.9em;
-}
-
-.ramo.aprobado {
-  background-color: #c8e6c9;
-  border-color: #2e7d32;
-  color: #2e7d32;
-  text-decoration: line-through;
-}
-
-.ramo.bloqueado {
-  background-color: #ddd;
-  color: #777;
-  opacity: 0.5;
-  pointer-events: none;
-  cursor: not-allowed;
-}
-.ramo.aprobado {
-  background-color: #c8e6c9;
-  border-color: #2e7d32;
-  color: #2e7d32;
-  text-decoration: line-through;
-}
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f7f7f7;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-h1 {
-  text-align: center;
-  color: #222;
-  margin-top: 20px;
-}
-
-#contenedor-semestres {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  gap: 20px;
-  padding: 30px;
-  margin-top: 20px;
-}
-
-.semestre {
-  min-width: 250px;
-  flex-shrink: 0;
-  background-color: #e0e0e0;
-  border: 2px solid #aaa;
-  border-radius: 10px;
-  padding: 10px;
-}
-
-.semestre h2 {
-  color: #444;
-  font-size: 1.3em;
-  margin-bottom: 10px;
-  text-align: center;
-}
-
-.ramo {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  margin: 5px 0;
-  padding: 8px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  text-align: center;
-  font-size: 0.9em;
-}
-
-.ramo.aprobado {
-  background-color: #c8e6c9;
-  border-color: #2e7d32;
-  color: #2e7d32;
-  text-decoration: line-through;
-}
-
-.ramo.bloqueado {
-  background-color: #ddd;
-  color: #777;
-  opacity: 0.5;
-  pointer-events: none;
-  cursor: not-allowed;
-}
-/* Variables CSS para colores - Ajustados para un estilo más "TikTok" o vibrante */
-:root {
-    --color-primary: #FF69B4; /* Rosa Chicle / Fucsia (Base para semestres) */
-    --color-secondary: #FFC0CB; /* Rosa claro (Base para ramos) */
-    --color-tertiary: #A020F0; /* Morado Vibrante (Para títulos de año) */
-    --color-text-dark: #333;
-    --color-text-light: #fff;
-    --color-background: #F0F2F5; /* Gris claro suave */
-    --color-hover: #FFDAB9; /* Melocotón claro para hover en ramos */
-    --color-active: #FF4500; /* Naranja rojizo para ramo seleccionado/clickeado */
-    --color-border: #ddd;
-    --color-line: #999;
-
-    /* Nuevos colores para estados de ramos */
-    --color-approved: #28A745; /* Verde brillante para aprobado */
-    --color-unlocked: #FFD700; /* Dorado vibrante para desbloqueado (listo para tomar) */
-    --color-locked: #6C757D; /* Gris oscuro para bloqueado */
-    --color-warning: #FFC107; /* Amarillo para mensajes de advertencia */
-}
-
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: var(--color-background);
-    color: var(--color-text-dark);
-    line-height: 1.6;
-    overflow-x: auto; /* Permite desplazamiento horizontal si la malla es muy ancha */
-}
-
-.header {
-    background-color: var(--color-tertiary); /* Títulos con el morado vibrante */
-    color: var(--color-text-light);
-    padding: 20px 0;
     text-align: center;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    color: #0056b3;
 }
 
-.header h1 {
-    margin: 0;
-    font-size: 2.2em;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.2); /* Sombra para el texto del título */
-}
-
-/* Contenedor principal para disposición horizontal */
-.malla-container {
-    display: flex; /* Los años se colocarán en fila */
-    padding: 25px;
-    gap: 30px; /* Más espacio entre los años */
-    align-items: flex-start; /* Alinea los años por arriba */
-    flex-wrap: nowrap; /* Evita que los años se envuelvan a la siguiente línea */
-    min-height: calc(100vh - 100px); /* Asegura que al menos ocupe la pantalla (resta altura del header) */
-    overflow-y: hidden; /* Oculta el scroll vertical del contenedor principal */
-    overflow-x: auto; /* Permite scroll horizontal si la malla es muy ancha */
-    background-color: var(--color-background); /* Asegura el fondo del contenedor */
+#malla-container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los años se envuelvan si hay muchos */
+    justify-content: center;
+    gap: 20px; /* Espacio entre los años */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .ano {
-    background-color: #fff;
-    border-radius: 15px; /* Bordes más redondeados */
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15); /* Sombra más pronunciada */
-    padding: 25px;
-    min-width: 300px; /* Ancho mínimo para cada año */
-    flex-shrink: 0; /* Evita que los años se encojan */
-    display: flex; /* Para que los semestres se apilen verticalmente */
-    flex-direction: column;
-    gap: 20px; /* Más espacio entre semestres dentro de un año */
-    border: 1px solid rgba(0,0,0,0.05); /* Borde suave */
+    flex: 1; /* Permite que los años se expandan */
+    min-width: 250px; /* Ancho mínimo para cada columna de año */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .ano h2 {
     text-align: center;
-    color: var(--color-tertiary);
+    color: #0056b3;
     margin-top: 0;
-    margin-bottom: 25px;
-    font-size: 2em;
-    font-weight: 700;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #0056b3;
+    padding-bottom: 10px;
 }
 
 .semestre {
-    padding: 20px;
-    background-color: var(--color-primary); /* Usa el rosa chicle para los semestres */
-    border-radius: 10px; /* Bordes redondeados */
-    box-shadow: inset 0 2px 5px rgba(0,0,0,0.15); /* Sombra interna para profundidad */
-    flex-grow: 1; /* Permite que los semestres crezcan y ocupen el espacio disponible */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start; /* Alinea los ramos al inicio del semestre */
-    border: 1px solid rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px dashed #ccc;
+    border-radius: 4px;
+    background-color: #eaeaea;
 }
 
 .semestre h3 {
     text-align: center;
-    color: var(--color-text-light); /* Texto blanco para mejor contraste con el rosa */
+    color: #333;
     margin-top: 0;
-    margin-bottom: 18px;
-    font-size: 1.4em;
-    font-weight: 600;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    margin-bottom: 10px;
 }
 
 .ramo {
-    background-color: var(--color-secondary); /* Rosa claro para los ramos */
-    color: var(--color-text-dark); /* Texto oscuro para ramos no aprobados */
-    padding: 14px 18px;
-    margin-bottom: 12px; /* Espacio entre ramos */
-    border-radius: 8px; /* Bordes redondeados */
+    padding: 10px 15px;
+    margin-bottom: 8px;
+    background-color: #e0e0e0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
     cursor: pointer;
-    transition: all 0.25s ease-in-out; /* Transición más suave */
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    font-size: 0.9em;
     text-align: center;
-    font-weight: 600;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.12); /* Sombra para los ramos */
-    position: relative;
-    z-index: 1;
-    border: 1px solid rgba(0,0,0,0.08); /* Borde suave */
 }
 
-.ramo:last-child {
-    margin-bottom: 0;
-}
-
-.ramo:hover {
-    background-color: var(--color-hover); /* Color melocotón para hover */
-    color: var(--color-text-dark);
-    transform: translateY(-3px) scale(1.01); /* Efecto de "levantar" más pronunciado */
-    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-}
-
-/* Estilos para estados de ramos */
+/* Estado: Aprobado */
 .ramo.aprobado {
-    background-color: var(--color-approved); /* Verde brillante */
-    color: var(--color-text-light);
-    border: 2px solid #218838; /* Borde verde más oscuro */
-    box-shadow: 0 0 0 3px var(--color-approved), 0 0 10px rgba(0,0,0,0.3); /* Sombra con halo verde */
-    cursor: pointer; /* Aún puede ser desaprobado */
-    font-weight: 700;
+    background-color: #d4edda; /* Verde claro */
+    border-color: #28a745; /* Verde */
+    color: #155724;
+    font-weight: bold;
 }
 
-.ramo.desbloqueado {
-    background-color: var(--color-unlocked); /* Dorado vibrante */
-    color: var(--color-text-dark); /* Texto oscuro para contraste en amarillo */
-    border: 2px solid #DAA520; /* Borde dorado más oscuro */
-    box-shadow: 0 0 0 2px var(--color-unlocked), 0 0 8px rgba(0,0,0,0.25);
-    cursor: pointer; /* Se puede aprobar */
-    animation: pulse-desbloqueado 1.5s infinite alternate; /* Animación de pulsación */
-}
-
-@keyframes pulse-desbloqueado {
-    from { transform: scale(1); }
-    to { transform: scale(1.01); box-shadow: 0 0 0 2px var(--color-unlocked), 0 0 12px rgba(255,215,0,0.5); }
-}
-
+/* Estado: Bloqueado (prerrequisitos no cumplidos) */
 .ramo.bloqueado {
-    background-color: var(--color-locked); /* Gris oscuro */
-    color: var(--color-text-light); /* Texto blanco para contraste en gris */
-    border: 2px solid #5A6268;
-    cursor: not-allowed; /* No se puede aprobar */
-    opacity: 0.8; /* Ligeramente transparente */
-    text-decoration: line-through; /* Tachado para indicar que no está disponible */
+    background-color: #f8d7da; /* Rojo claro */
+    border-color: #dc3545; /* Rojo */
+    color: #721c24;
+    cursor: not-allowed;
+    opacity: 0.6;
 }
 
+/* Estado: Desbloqueado (listo para tomar) */
+.ramo.desbloqueado {
+    background-color: #fff3cd; /* Amarillo claro */
+    border-color: #ffc107; /* Amarillo */
+    color: #856404;
+}
 
-/* Estilos para los prerrequisitos resaltados (al hover) */
+/* Hover: Prerrequisito resaltado */
 .ramo.prerequisite-highlight {
-    background-color: #90EE90; /* Verde pastel */
-    color: var(--color-text-dark);
-    transform: scale(1.03);
-    box-shadow: 0 0 0 3px #3CB371, 0 0 10px rgba(0,0,0,0.3); /* Borde verde y sombra */
-    z-index: 2; /* Para que esté por encima de otros ramos */
+    background-color: #add8e6; /* Azul claro */
+    border-color: #007bff;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
 }
 
+/* Hover: Consecuencia resaltada (ramos que tienen este como prerrequisito) */
 .ramo.consequence-highlight {
-    background-color: #ADD8E6; /* Azul celeste */
-    color: var(--color-text-dark);
-    transform: scale(1.03);
-    box-shadow: 0 0 0 3px #1E90FF, 0 0 10px rgba(0,0,0,0.3); /* Borde azul y sombra */
-    z-index: 2; /* Para que esté por encima de otros ramos */
+    background-color: #cce5ff; /* Azul muy claro */
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
 }
 
-/* Tooltip para mostrar información del ramo */
+/* Tooltip */
 .tooltip {
     position: absolute;
-    background-color: rgba(0, 0, 0, 0.9); /* Fondo casi negro transparente */
-    color: var(--color-text-light);
-    padding: 12px 18px;
-    border-radius: 8px;
-    font-size: 0.95em;
-    pointer-events: none; /* Ignora eventos del ratón para no interferir */
+    background-color: #333;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 0.85em;
+    white-space: nowrap;
+    z-index: 1000;
     opacity: 0;
-    transition: opacity 0.3s ease, transform 0.3s ease; /* Transición más suave */
-    transform: translate(-50%, -15px); /* Un poco más arriba */
-    z-index: 2000; /* Asegura que esté por encima de todo */
-    white-space: nowrap; /* Evita que el texto del tooltip se rompa */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-    border: 1px solid rgba(255,255,255,0.1); /* Borde ligero */
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    pointer-events: none; /* Permite hacer clic a través del tooltip */
 }
 
 .tooltip.active {
     opacity: 1;
-    transform: translate(-50%, 0); /* Baja a su posición final */
+    visibility: visible;
+}
+
+/* Media Queries para responsividad */
+@media (max-width: 768px) {
+    #malla-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .ano {
+        min-width: 90%;
+        margin-bottom: 20px;
+    }
 }
