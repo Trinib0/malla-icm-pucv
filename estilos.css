@@ -102,9 +102,11 @@ h1 {
 
 /* Hover: Consecuencia resaltada (ramos que tienen este como prerrequisito) */
 .ramo.consequence-highlight {
-    background-color: #ffeacc;   /* Naranjo muy claro, casi durazno */
-    border-color: #ff9900;       /* Naranjo fuerte */
-    box-shadow: 0 0 8px rgba(255, 153, 0, 0.3); /* Sombra naranjo */
+  background-color: #e6ccff;   /* Lila claro */
+  border-color: #a64dff;       /* Lila medio-intenso */
+  box-shadow: 0 0 8px rgba(166, 77, 255, 0.4); /* Sombra lila */
+}
+
 }
   
 }
