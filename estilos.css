@@ -104,11 +104,7 @@ h1 {
 .ramo.consequence-highlight {
   background-color: #e6ccff;   /* Lila claro */
   border-color: #a64dff;       /* Lila medio-intenso */
-  box-shadow: 0 0 8px rgba(166, 77, 255, 0.4); /* Sombra lila */
-}
-
-}
-  
+  box-shadow: 0 0 8px rgba(166, 77, 255, 0.4); /* Sombra lila */ 
 }
 
 /* Tooltip */
