@@ -102,9 +102,11 @@ h1 {
 
 /* Hover: Consecuencia resaltada (ramos que tienen este como prerrequisito) */
 .ramo.consequence-highlight {
-    background-color: #cce5ff; /* Azul muy claro */
-    border-color: #007bff;
-    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+    background-color: #ffeacc;   /* Naranjo muy claro, casi durazno */
+    border-color: #ff9900;       /* Naranjo fuerte */
+    box-shadow: 0 0 8px rgba(255, 153, 0, 0.3); /* Sombra naranjo */
+}
+  
 }
 
 /* Tooltip */
