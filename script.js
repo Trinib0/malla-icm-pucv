@@ -330,4 +330,4 @@ document.addEventListener('DOMContentLoaded', () => {
             tooltip.classList.remove('active');
         });
     });
-}); 
+});
