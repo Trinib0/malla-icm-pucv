@@ -23,7 +23,7 @@ const malla = [
                 nombre: "Semestre 2",
                 ramos: [
                     { id: "MAT1002", nombre: "Cálculo diferencial e integral", prerrequisitos: ["MAT1001"], creditos: 6, aprobado: false },
-                    { id: "FIS1001", nombre: "Física mecánica", prerrequisitos: ["MAT1001"], creditos 5,: aprobado: false },
+                    { id: "FIS1001", nombre: "Física mecánica", prerrequisitos: ["MAT1001"], creditos: 5, aprobado: false },
                     { id: "FIS1012", nombre: "Laboratorio de física mecánica", prerrequisitos: ["MAT1001"], creditos: 3, aprobado: false },
                     { id: "ICM1012", nombre: "Dibujo para mecánica", prerrequisitos: [], creditos: 4, aprobado: false }
                 ]
