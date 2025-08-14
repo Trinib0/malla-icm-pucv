@@ -13,20 +13,20 @@ const malla = [
             {
                 nombre: "Semestre 1",
                 ramos: [
-                    { id: "ICM1010", nombre: "Introducción a la ingeniería mecánica", prerrequisitos: [], creditos: 5, aprobado: false },
-                    { id: "MAT1001", nombre: "Fundamentos de matemáticas para ingeniería", prerrequisitos: [], creditos: 6, aprobado: false },
-                    { id: "FIS1010", nombre: "Fundamentos de física", prerrequisitos: [], creditos: 5, aprobado: false },
-                    { id: "QUI1127", nombre: "Fundamentos de química", prerrequisitos: [], creditos: 4, aprobado: false }, // Corregido QUI127 a QUI1127
-                    { id: "FIN100-73", nombre: "Comunicación efectiva y desarrollo profesional e integral", prerrequisitos: [], creditos: 3, aprobado: false } 
+                    { id: "ICM1010", nombre: "Introducción a la ingeniería mecánica", prerrequisitos: [], creditos:5, aprobado: false },
+                    { id: "MAT1001", nombre: "Fundamentos de matemáticas para ingeniería", prerrequisitos: [], creditos:6, aprobado: false },
+                    { id: "FIS1010", nombre: "Fundamentos de física", prerrequisitos: [], creditos:5, aprobado: false },
+                    { id: "QUI1127", nombre: "Fundamentos de química", prerrequisitos: [], creditos:4, aprobado: false }, // Corregido QUI127 a QUI1127
+                    { id: "FIN100-73", nombre: "Comunicación efectiva y desarrollo profesional e integral", prerrequisitos: [], creditos:3, aprobado: false } 
                 ]
             },
             {
                 nombre: "Semestre 2",
                 ramos: [
-                    { id: "MAT1002", nombre: "Cálculo diferencial e integral", prerrequisitos: ["MAT1001"], creditos: 6, aprobado: false },
-                    { id: "FIS1001", nombre: "Física mecánica", prerrequisitos: ["MAT1001"], creditos: 5, aprobado: false },
-                    { id: "FIS1012", nombre: "Laboratorio de física mecánica", prerrequisitos: ["MAT1001"], creditos: 3, aprobado: false },
-                    { id: "ICM1012", nombre: "Dibujo para mecánica", prerrequisitos: [], creditos: 4, aprobado: false }
+                    { id: "MAT1002", nombre: "Cálculo diferencial e integral", prerrequisitos: ["MAT1001"], creditos:6, aprobado: false },
+                    { id: "FIS1001", nombre: "Física mecánica", prerrequisitos: ["MAT1001"], creditos:5, aprobado: false },
+                    { id: "FIS1012", nombre: "Laboratorio de física mecánica", prerrequisitos: ["MAT1001"], creditos:3, aprobado: false },
+                    { id: "ICM1012", nombre: "Dibujo para mecánica", prerrequisitos: [], creditos:4, aprobado: false }
                 ]
             }
         ]
@@ -37,19 +37,19 @@ const malla = [
             {
                 nombre: "Semestre 3",
                 ramos: [
-                    { id: "MAT1003", nombre: "Cálculo en varias variables", prerrequisitos: ["MAT1002"], creditos: 4, aprobado: false },
-                    { id: "MAT1004", nombre: "Álgebra lineal", prerrequisitos: ["MAT1002"], creditos: 4, aprobado: false },
-                    { id: "ICM2010", nombre: "Estadística aplicada", prerrequisitos: ["MAT1001"], creditos: 4, aprobado: false },
-                    { id: "ICM2011", nombre: "Ciencias de los materiales", prerrequisitos: ["QUI1127"], creditos: 6, aprobado: false } // Corregido QUI127 a QUI1127
+                    { id: "MAT1003", nombre: "Cálculo en varias variables", prerrequisitos: ["MAT1002"], creditos:4, aprobado: false },
+                    { id: "MAT1004", nombre: "Álgebra lineal", prerrequisitos: ["MAT1002"], creditos:4, aprobado: false },
+                    { id: "ICM2010", nombre: "Estadística aplicada", prerrequisitos: ["MAT1001"], creditos:4, aprobado: false },
+                    { id: "ICM2011", nombre: "Ciencias de los materiales", prerrequisitos: ["QUI1127"], creditos:6, aprobado: false } // Corregido QUI127 a QUI1127
                 ]
             },
             {
                 nombre: "Semestre 4",
                 ramos: [
-                    { id: "MAT1005", nombre: "Ecuaciones diferenciales", prerrequisitos: ["MAT1003"], creditos: 4, aprobado: false },
-                    { id: "ICM2013", nombre: "Estática", prerrequisitos: ["MAT1003", "FIS1001"], creditos: 6, aprobado: false },
-                    { id: "ICM2012", nombre: "Mediciones y metrología", prerrequisitos: ["ICM2010"], creditos: 3, aprobado: false },
-                    { id: "ICM2014", nombre: "Materiales para ingeniería", prerrequisitos: ["ICM2011"], creditos: 6, aprobado: false }
+                    { id: "MAT1005", nombre: "Ecuaciones diferenciales", prerrequisitos: ["MAT1003"], creditos:4, aprobado: false },
+                    { id: "ICM2013", nombre: "Estática", prerrequisitos: ["MAT1003", "FIS1001"], creditos:6, aprobado: false },
+                    { id: "ICM2012", nombre: "Mediciones y metrología", prerrequisitos: ["ICM2010"], creditos:3, aprobado: false },
+                    { id: "ICM2014", nombre: "Materiales para ingeniería", prerrequisitos: ["ICM2011"], creditos:6, aprobado: false }
                 ]
             }
         ]
@@ -60,19 +60,19 @@ const malla = [
             {
                 nombre: "Semestre 5",
                 ramos: [
-                    { id: "MAT1007", nombre: "Ecuaciones diferenciales parciales", prerrequisitos: ["MAT1005"], creditos: 4, aprobado: false },
-                    { id: "ICM3010", nombre: "Dinámica", prerrequisitos: ["ICM2013"], creditos: 6, aprobado: false },
-                    { id: "ICM3011", nombre: "Termodinámica 1", prerrequisitos: ["MAT1003", "QUI1127"], creditos: 6, aprobado: false }, // Corregido QUI127 a QUI1127
-                    { id: "ING9001", nombre: "Inglés 1", prerrequisitos: [], creditos: 2, aprobado: false }
+                    { id: "MAT1007", nombre: "Ecuaciones diferenciales parciales", prerrequisitos: ["MAT1005"], creditos:4, aprobado: false },
+                    { id: "ICM3010", nombre: "Dinámica", prerrequisitos: ["ICM2013"], creditos:6, aprobado: false },
+                    { id: "ICM3011", nombre: "Termodinámica 1", prerrequisitos: ["MAT1003", "QUI1127"], creditos:6, aprobado: false }, // Corregido QUI127 a QUI1127
+                    { id: "ING9001", nombre: "Inglés 1", prerrequisitos: [], creditos:2, aprobado: false }
                 ]
             },
             {
                 nombre: "Semestre 6",
                 ramos: [
-                    { id: "ICM3012", nombre: "Procesos de fabricación 1", prerrequisitos: ["ICM2011"], creditos: 4, aprobado: false },
-                    { id: "ICM3013", nombre: "Lenguaje de programación y métodos numéricos", prerrequisitos: ["MAT1005"], creditos: 4, aprobado: false },
-                    { id: "ICM3014", nombre: "Mecánica de fluidos", prerrequisitos: ["ICM3011", "MAT1007"], creditos: 6, aprobado: false },
-                    { id: "ING9002", nombre: "Inglés 2", prerrequisitos: ["ING9001"], creditos: 2, aprobado: false }
+                    { id: "ICM3012", nombre: "Procesos de fabricación 1", prerrequisitos: ["ICM2011"], creditos:4, aprobado: false },
+                    { id: "ICM3013", nombre: "Lenguaje de programación y métodos numéricos", prerrequisitos: ["MAT1005"], creditos:4, aprobado: false },
+                    { id: "ICM3014", nombre: "Mecánica de fluidos", prerrequisitos: ["ICM3011", "MAT1007"], creditos:6, aprobado: false },
+                    { id: "ING9002", nombre: "Inglés 2", prerrequisitos: ["ING9001"], creditos:2, aprobado: false }
                 ]
             }
         ]
@@ -83,19 +83,19 @@ const malla = [
             {
                 nombre: "Semestre 7",
                 ramos: [
-                    { id: "ICM4012", nombre: "Termodinámica 2", prerrequisitos: ["ICM3011", "ICM3014"], creditos: 5, aprobado: false },
-                    { id: "ICM4011", nombre: "Mecánica de materiales", prerrequisitos: ["ICM2011"], creditos: 6, aprobado: false },
-                    { id: "ICM4010", nombre: "Procesos de fabricación 2", prerrequisitos: ["ICM3012"], creditos: 4, aprobado: false },
-                    { id: "ING9003", nombre: "Inglés 3", prerrequisitos: ["ING9002"], creditos: 2, aprobado: false }
+                    { id: "ICM4012", nombre: "Termodinámica 2", prerrequisitos: ["ICM3011", "ICM3014"], creditos:5, aprobado: false },
+                    { id: "ICM4011", nombre: "Mecánica de materiales", prerrequisitos: ["ICM2011"], creditos:6, aprobado: false },
+                    { id: "ICM4010", nombre: "Procesos de fabricación 2", prerrequisitos: ["ICM3012"], creditos:4, aprobado: false },
+                    { id: "ING9003", nombre: "Inglés 3", prerrequisitos: ["ING9002"], creditos:2, aprobado: false }
                 ]
             },
             {
                 nombre: "Semestre 8",
                 ramos: [
-                    { id: "ICM4014", nombre: "Electrotecnia", creditos: 6, creditosMinimos: 80, aprobado: false }, // requisito especial
-                    { id: "ICM4015", nombre: "Elementos de máquinas", prerrequisitos: ["ICM4011", "ICM3010"], creditos: 4, aprobado: false },
-                    { id: "ICM4013", nombre: "Vibraciones mecánicas", prerrequisitos: ["ICM3010", "MAT1007"], creditos: 4, aprobado: false },
-                    { id: "ICM4016", nombre: "Transferencia de calor", prerrequisitos: ["ICM3014", "ICM4012"], creditos: 6, aprobado: false },
+                    { id: "ICM4014", nombre: "Electrotecnia", prerrquisitos:[], creditos:6, creditosMinimos:80, aprobado: false }, // requisito especial
+                    { id: "ICM4015", nombre: "Elementos de máquinas", prerrequisitos: ["ICM4011", "ICM3010"], creditos:4, aprobado: false },
+                    { id: "ICM4013", nombre: "Vibraciones mecánicas", prerrequisitos: ["ICM3010", "MAT1007"], creditos:4, aprobado: false },
+                    { id: "ICM4016", nombre: "Transferencia de calor", prerrequisitos: ["ICM3014", "ICM4012"], creditos:6, aprobado: false },
                     { id: "ING9004", nombre: "Inglés 4", prerrequisitos: ["ING9003"], creditos: 2, aprobado: false }
                 ]
             }
@@ -107,20 +107,20 @@ const malla = [
             {
                 nombre: "Semestre 9",
                 ramos: [
-                    { id: "ICM5013", nombre: "Turbomáquinas", prerrequisitos: ["ICM4016"], creditos: 6, aprobado: false },
-                    { id: "ICM5012", nombre: "Modelación mecánica", prerrequisitos: ["ICM4011", "ICM4016"], creditos: 4, aprobado: false },
-                    { id: "ICM5010", nombre: "Análisis de falla y monitoreo de condiciones", prerrequisitos: ["ICM2014"], creditos: 3, aprobado: false },
-                    { id: "ICM5011", nombre: "Automatización y control", prerrequisitos: ["ICM4014"], creditos: 4, aprobado: false },
-                    { id: "ICM550", nombre: "Evaluación de proyectos", prerrequisitos: [], creditos: 3, aprobado: false } 
+                    { id: "ICM5013", nombre: "Turbomáquinas", prerrequisitos: ["ICM4016"], creditos:6, aprobado: false },
+                    { id: "ICM5012", nombre: "Modelación mecánica", prerrequisitos: ["ICM4011", "ICM4016"], creditos:4, aprobado: false },
+                    { id: "ICM5010", nombre: "Análisis de falla y monitoreo de condiciones", prerrequisitos: ["ICM2014"], creditos:3, aprobado: false },
+                    { id: "ICM5011", nombre: "Automatización y control", prerrequisitos: ["ICM4014"], creditos:4, aprobado: false },
+                    { id: "ICM550", nombre: "Evaluación de proyectos", prerrequisitos: [], creditos:3, aprobado: false } 
                 ]
             },
             {
                 nombre: "Semestre 10",
                 ramos: [
-                    { id: "ICM5014", nombre: "Herramientas de gestión de la producción", prerrequisitos: [], creditos: 3, aprobado: false },
-                    { id: "ICM5016", nombre: "Diseño mecánico", prerrequisitos: ["ICM5012"], creditos: 3, aprobado: false },
-                    { id: "ICM5017", nombre: "Proyecto de titulación 1", prerrequisitos: [], creditos: 5, creditosMinimos: 140, aprobado: false }, // requisito especial
-                    { id: "ICM5015", nombre: "Optimización e ingeniería de plantas", prerrequisitos: [], creditos: 3, aprobado: false }
+                    { id: "ICM5014", nombre: "Herramientas de gestión de la producción", prerrequisitos: [], creditos:3, aprobado: false },
+                    { id: "ICM5016", nombre: "Diseño mecánico", prerrequisitos: ["ICM5012"], creditos:3, aprobado: false },
+                    { id: "ICM5017", nombre: "Proyecto de titulación 1", prerrequisitos: [], creditos:5, creditosMinimos: 140, aprobado: false }, // requisito especial
+                    { id: "ICM5015", nombre: "Optimización e ingeniería de plantas", prerrequisitos: [], creditos:3, aprobado: false }
                 ]
             }
         ]
@@ -131,10 +131,10 @@ const malla = [
             {
                 nombre: "Semestre 11",
                 ramos: [
-                    { id: "ICM6010", nombre: "Administración de RR.HH.", prerrequisitos: [], creditos: 3, aprobado: false },
-                    { id: "ICM6011", nombre: "Gestión de activos y confiabilidad", prerrequisitos: ["ICM5010"], creditos: 3, aprobado: false },
-                    { id: "ICM6012", nombre: "Proyecto de ingeniería", prerrequisitos: ["ICM5015", "ICM550"], creditos: 3, aprobado: false }, 
-                    { id: "ICM6013", nombre: "Proyecto de titulación 2", prerrequisitos: ["ICM5017"], creditos: 5, aprobado: false }
+                    { id: "ICM6010", nombre: "Administración de RR.HH.", prerrequisitos: [], creditos:3, aprobado: false },
+                    { id: "ICM6011", nombre: "Gestión de activos y confiabilidad", prerrequisitos: ["ICM5010"], creditos:3, aprobado: false },
+                    { id: "ICM6012", nombre: "Proyecto de ingeniería", prerrequisitos: ["ICM5015", "ICM550"], creditos:3, aprobado: false }, 
+                    { id: "ICM6013", nombre: "Proyecto de titulación 2", prerrequisitos: ["ICM5017"], creditos:5, aprobado: false }
                 ]
             }
         ]
