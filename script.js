@@ -16,7 +16,7 @@ const malla = [
                     { id: "MAT1001", nombre: "Fundamentos de matemáticas para ingeniería", prerrequisitos: [], aprobado: false },
                     { id: "FIS1010", nombre: "Fundamentos de física", prerrequisitos: [], aprobado: false },
                     { id: "QUI1127", nombre: "Fundamentos de química", prerrequisitos: [], aprobado: false }, // Corregido QUI127 a QUI1127
-                    { id: "COM100-73", nombre: "Comunicación efectiva y desarrollo profesional e integral", prerrequisitos: [], aprobado: false } // Corregido FIN100-73 a COM100-73
+                    { id: "FIN100-73", nombre: "Comunicación efectiva y desarrollo profesional e integral", prerrequisitos: [], aprobado: false } 
                 ]
             },
             {
