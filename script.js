@@ -91,7 +91,7 @@ const malla = [
             {
                 nombre: "Semestre 8",
                 ramos: [
-                    { id: "ICM4014", nombre: "Electrotecnia", prerrequisitos: ["80 creditos aprobados"], aprobado: false },
+                    { id: "ICM4014", nombre: "Electrotecnia", prerrequisitos: [80 creditos aprobados], aprobado: false },
                     { id: "ICM4015", nombre: "Elementos de máquinas", prerrequisitos: ["ICM4011", "ICM3010"], aprobado: false },
                     { id: "ICM4013", nombre: "Vibraciones mecánicas", prerrequisitos: ["ICM3010", "MAT1007"], aprobado: false },
                     { id: "ICM4016", nombre: "Transferencia de calor", prerrequisitos: ["ICM3014", "ICM4012"], aprobado: false },
