@@ -2,7 +2,8 @@
 
 // ----------------------------------------------------
 // 1. Datos de la Malla
-//    Cada ramo tiene un 'id', 'nombre', lista de 'prerrequisitos', 'creditos', 'creditosminimis' y un estado 'aprobado'.
+//    Cada ramo tiene un 'id', 'nombre', lista de 'prerrequisitos', 'creditos' y un estado 'aprobado'.
+//    Electrotecnia tiene un 'creditosMinimos'.
 // ----------------------------------------------------
 
 const malla = [
