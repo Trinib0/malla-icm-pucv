@@ -153,7 +153,7 @@ malla.forEach(ano => {
 });
 // Créditos totales de la carrera (obligatorios + optativos + formación fundamental)
 const CREDITOS_TOTALES = 219;
-}
+
     // Funcion para calcular los creditos aprobados 
     function calcularCreditosAprobados() {
       return malla.flatMap(ano => ano.semestres)
