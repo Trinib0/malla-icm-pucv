@@ -239,7 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const ramoDiv = document.createElement('div');
                 ramoDiv.classList.add('ramo');
                 ramoDiv.dataset.id = ramoData.id; // Almacena el ID del ramo en un atributo de datos HTML
-                ramoDiv.textContent = `${ramoData.id} - ${ramoData.nombre}`; // Muestra ID y nombre
+                ramoDiv.textContent = `${ramoData.id} - ${ramoData.nombre} (Créditos: ${ramoData.creditos})`; // Muestra ID , nombre y creditos 
                 semestreDiv.appendChild(ramoDiv);
             });
             anoDiv.appendChild(semestreDiv);
