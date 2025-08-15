@@ -91,7 +91,7 @@ const malla = [
             {
                 nombre: "Semestre 8",
                 ramos: [
-                    { id: "ICM4014", nombre: "Electrotecnia", prerrequisitos: [], creditos: 6, creditosMinimos: 80, aprobado: false }, // requisito especial
+                    { id: "ICM4014", nombre: "Electrotecnia", prerrequisitos: ["ICM2013"], creditos: 6, creditosMinimos: 80, aprobado: false },
                     { id: "ICM4015", nombre: "Elementos de máquinas", prerrequisitos: ["ICM4011", "ICM3010"], creditos: 4, aprobado: false },
                     { id: "ICM4013", nombre: "Vibraciones mecánicas", prerrequisitos: ["ICM3010", "MAT1007"], creditos: 4, aprobado: false },
                     { id: "ICM4016", nombre: "Transferencia de calor", prerrequisitos: ["ICM3014", "ICM4012"], creditos: 6, aprobado: false },
@@ -118,7 +118,7 @@ const malla = [
                 ramos: [
                     { id: "ICM5014", nombre: "Herramientas de gestión de la producción", prerrequisitos: [], creditos: 3, aprobado: false },
                     { id: "ICM5016", nombre: "Diseño mecánico", prerrequisitos: ["ICM5012"], creditos: 3, aprobado: false },
-                    { id: "ICM5017", nombre: "Proyecto de titulación 1", prerrequisitos: [], creditos: 5, creditosMinimos: 140, aprobado: false }, // requisito especial
+                    { id: "ICM5017", nombre: "Proyecto de titulación 1", prerrequisitos: [], creditos: 5, creditosMinimos: 140, aprobado: false },
                     { id: "ICM5015", nombre: "Optimización e ingeniería de plantas", prerrequisitos: [], creditos: 3, aprobado: false }
                 ]
             }
@@ -149,19 +149,19 @@ malla.forEach(ano => {
         });
     });
 });
-// Funcion para calcular los creditos aprobados 
-function calcularCreditosAprobados() {
-  return malla.flatMap(ano => ano.semestres)
+    // Funcion para calcular los creditos aprobados 
+    function calcularCreditosAprobados() {
+      return malla.flatMap(ano => ano.semestres)
               .flatMap(sem => sem.ramos)
               .filter(r => r.aprobado)
               .reduce((sum, r) => sum + (r.creditos || 0), 0);
 }
-// Función para habilitar un ramo con un minimos de creditos aprobados 
-function estaHabilitado(ramo) {
-  const prereqsCumplidos = ramo.prerrequisitos.every(pr => estaAprobado(pr));
-  const creditosCumplidos = !ramo.creditosMinimos || 
+    // Función para habilitar un ramo con un minimos de creditos aprobados 
+    function estaHabilitado(ramo) {
+      const prereqsCumplidos = ramo.prerrequisitos.every(pr => estaAprobado(pr));
+      const creditosCumplidos = !ramo.creditosMinimos || 
                              (calcularCreditosAprobados() >= ramo.creditosMinimos);
-  return prereqsCumplidos && creditosCumplidos;
+      return prereqsCumplidos && creditosCumplidos;
 }
 
 
