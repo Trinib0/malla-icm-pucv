@@ -151,6 +151,9 @@ malla.forEach(ano => {
         });
     });
 });
+// Créditos totales de la carrera (obligatorios + optativos + formación fundamental)
+const CREDITOS_TOTALES = 219;
+}
     // Funcion para calcular los creditos aprobados 
     function calcularCreditosAprobados() {
       return malla.flatMap(ano => ano.semestres)
@@ -211,7 +214,14 @@ function updateRamoStates() {
         }
     });
 }
+// Función para actualizar la barra de progreso
+function updateProgressBar() {
+    const aprobados = calcularCreditosAprobados();
+    const porcentaje = Math.min((aprobados / CREDITOS_TOTALES) * 100, 100);
 
+    document.getElementById('progreso-bar').style.width = `${porcentaje}%`;
+    document.getElementById('progreso-texto').textContent = `${porcentaje.toFixed(1)}% completado`;
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     const mallaContainer = document.getElementById('malla-container'); // Cambiado a getElementById
