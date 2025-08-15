@@ -3,16 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Malla Ingeniería Civil Mecánica - PUCV</title>
+    <title>Malla Interactiva ICM PUCV</title>
     <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
-    <h1>Malla Ingeniería Civil Mecánica - PUCV</h1>
-    
-    <div id="malla-container">
-        </div>
+    <h1>Malla Interactiva Ingeniería Civil Mecánica</h1>
 
-    <div id="tooltip" class="tooltip"></div>
+    <!-- Contenedor de la malla -->
+    <div id="malla-container"></div>
+
+    <!-- Tooltip para mostrar prerrequisitos -->
+    <div id="tooltip"></div>
+
+    <!-- Barra de progreso al final de la página -->
+    <div id="progreso-container">
+        <div id="progreso-bar"></div>
+    </div>
+    <p id="progreso-texto">0% completado</p>
 
     <script src="script.js"></script>
 </body>
