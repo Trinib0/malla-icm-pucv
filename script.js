@@ -27,7 +27,7 @@ const malla = [
                     { id: "FIS1012", nombre: "Laboratorio de física mecánica", prerrequisitos: ["MAT1001"], creditos: 3, aprobado: false },
                     { id: "ICM1012", nombre: "Dibujo para mecánica", prerrequisitos: [], creditos: 4, aprobado: false },
                     { id: "ICR010", nombre: "Antropología Cristiana", prerrequisitos: [], creditos: 2, aprobado: false },
-                    { id: "FOFU01", nombre: "Formación Fundamental 1", prerrequisitos: [], creditos: 2, aprobado: false },
+                    { id: "FOFU01", nombre: "Formación Fundamental 1", prerrequisitos: [], creditos: 2, aprobado: false }
                 ]
             }
         ]
@@ -73,7 +73,8 @@ const malla = [
                     { id: "ICM3012", nombre: "Procesos de fabricación 1", prerrequisitos: ["ICM2011"], creditos: 4, aprobado: false },
                     { id: "ICM3013", nombre: "Lenguaje de programación y métodos numéricos", prerrequisitos: ["MAT1005"], creditos: 4, aprobado: false },
                     { id: "ICM3014", nombre: "Mecánica de fluidos", prerrequisitos: ["ICM3011", "MAT1007"], creditos: 6, aprobado: false },
-                    { id: "ING9002", nombre: "Inglés 2", prerrequisitos: ["ING9001"], creditos: 2, aprobado: false }
+                    { id: "ING9002", nombre: "Inglés 2", prerrequisitos: ["ING9001"], creditos: 2, aprobado: false }, 
+                    { id: "FOFU02", nombre: "Formación Fundamental 2", prerrequisitos: [], creditos: 2, aprobado: false }
                 ]
             }
         ]
@@ -87,7 +88,10 @@ const malla = [
                     { id: "ICM4012", nombre: "Termodinámica 2", prerrequisitos: ["ICM3011", "ICM3014"], creditos: 5, aprobado: false },
                     { id: "ICM4011", nombre: "Mecánica de materiales", prerrequisitos: ["ICM2011"], creditos: 6, aprobado: false },
                     { id: "ICM4010", nombre: "Procesos de fabricación 2", prerrequisitos: ["ICM3012"], creditos: 4, aprobado: false },
-                    { id: "ING9003", nombre: "Inglés 3", prerrequisitos: ["ING9002"], creditos: 2, aprobado: false }
+                    { id: "ING9003", nombre: "Inglés 3", prerrequisitos: ["ING9002"], creditos: 2, aprobado: false },
+                    { id: "ICR020", nombre: "Etica Cristiana", prerrequisitos: [], creditos: 2, aprobado: false },
+                    { id: "FOFU03", nombre: "Formación Fundamental 3", prerrequisitos: [], creditos: 2, aprobado: false }
+                
                 ]
             },
             {
