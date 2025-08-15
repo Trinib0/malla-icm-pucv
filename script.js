@@ -165,21 +165,26 @@ malla.forEach(ano => {
 }
 
 
-// Función para verificar si un ramo está desbloqueado (todos sus prerrequisitos están aprobados)
+// Función para verificar si un ramo está desbloqueado
+// (TODOS sus prerrequisitos están aprobados Y, si corresponde, se cumplen los créditos mínimos)
 function isRamoUnlocked(ramoId) {
     const ramo = ramosMap.get(ramoId);
-    if (!ramo) return false; // Si el ramo no existe en los datos, no puede estar desbloqueado
-    // Si no tiene prerrequisitos, siempre está desbloqueado (se puede tomar desde el inicio)
-    if (ramo.prerrequisitos.length === 0) {
-        return true;
-    }
-    // Verifica si *todos* sus prerrequisitos están marcados como aprobados
-    return ramo.prerrequisitos.every(prereqId => {
+    if (!ramo) return false;
+
+    // Comprobar prerrequisitos
+    const prereqsCumplidos = ramo.prerrequisitos.every(prereqId => {
         const prereqRamo = ramosMap.get(prereqId);
-        // El prerrequisito debe existir y estar aprobado
         return prereqRamo && prereqRamo.aprobado;
     });
+
+    // Comprobar créditos mínimos (si es que tiene)
+    const creditosCumplidos = !ramo.creditosMinimos ||
+        (calcularCreditosAprobados() >= ramo.creditosMinimos);
+
+    // Solo está desbloqueado si se cumplen ambas condiciones
+    return prereqsCumplidos && creditosCumplidos;
 }
+
 
 // Función principal para actualizar las clases de CSS de todos los ramos en el DOM
 // Esto es CRUCIAL para que los colores se actualicen después de cada interacción
