@@ -140,3 +140,27 @@ h1 {
         margin-bottom: 20px;
     }
 }
+/* ------- Leyenda de colores -------- */
+
+#leyenda {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+#leyenda .cuadro {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin-right: 4px;
+  border-radius: 3px;
+}
+
+.cuadro.verde   { background: #4caf50; }
+.cuadro.amarillo{ background: #ffc107; }
+.cuadro.rojo    { background: #f44336; }
+.cuadro.azul    { background: #2196f3; }
+.cuadro.lila    { background: #9c27b0; }
+
+/* ----------------------------------- */
