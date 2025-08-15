@@ -125,7 +125,9 @@ const malla = [
                     { id: "ICM5014", nombre: "Herramientas de gestión de la producción", prerrequisitos: [], creditos: 3, aprobado: false },
                     { id: "ICM5016", nombre: "Diseño mecánico", prerrequisitos: ["ICM5012"], creditos: 3, aprobado: false },
                     { id: "ICM5017", nombre: "Proyecto de titulación 1", prerrequisitos: [], creditos: 5, creditosMinimos: 140, aprobado: false },
-                    { id: "ICM5015", nombre: "Optimización e ingeniería de plantas", prerrequisitos: [], creditos: 3, aprobado: false }
+                    { id: "ICM5015", nombre: "Optimización e ingeniería de plantas", prerrequisitos: [], creditos: 3, aprobado: false },
+                    { id: "OIM010", nombre: "Electivo de Especialidad 1", prerrequisitos:[], creditos: 3, aprobado: false },
+                    { id: "OIM012", nombre: "Electivo de Especialidad 2", prerrequisitos:[], creditos: 3, aprobado: false }
                 ]
             }
         ]
@@ -139,7 +141,9 @@ const malla = [
                     { id: "ICM6010", nombre: "Administración de RR.HH.", prerrequisitos: [], creditos: 3, aprobado: false },
                     { id: "ICM6011", nombre: "Gestión de activos y confiabilidad", prerrequisitos: ["ICM5010"], creditos: 3, aprobado: false },
                     { id: "ICM6012", nombre: "Proyecto de ingeniería", prerrequisitos: ["ICM5015", "ICM550"], creditos: 3, aprobado: false }, 
-                    { id: "ICM6013", nombre: "Proyecto de titulación 2", prerrequisitos: ["ICM5017"], creditos: 5, aprobado: false }
+                    { id: "ICM6013", nombre: "Proyecto de titulación 2", prerrequisitos: ["ICM5017"], creditos: 5, aprobado: false },
+                    { id: "OIM013", nombre: "Electivo de Especialidad 3", prerrequisitos:[], creditos: 3, aprobado: false },
+                    { id: "OIM014", nombre: "Electivo de Especialidad 4", prerrequisitos:[], creditos: 3, aprobado: false}
                 ]
             }
         ]
