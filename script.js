@@ -221,7 +221,6 @@ function updateProgressBar() {
 
     document.getElementById('progreso-bar').style.width = `${porcentaje}%`;
     document.getElementById('progreso-texto').textContent = `${porcentaje.toFixed(1)}% completado`;
-}
 
 document.addEventListener('DOMContentLoaded', () => {
     const mallaContainer = document.getElementById('malla-container'); // Cambiado a getElementById
